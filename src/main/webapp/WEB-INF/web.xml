@@ -5,5 +5,28 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee  
     http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-  <display-name>Archetype Created Web Application</display-name>
+  <display-name>kitchen</display-name>
+  
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/classes/application.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <servlet>
+    <servlet-name>springmvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:springmvc.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springmvc</servlet-name>
+    <url-pattern>*.ms</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

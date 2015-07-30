@@ -12,11 +12,15 @@ import com.family.kitchen.user.po.User;
  * @version V1.0 
  * <pre>Histroy:
  *       2015年7月26日 下午8:50:12  XBB  Create
- *       2014-10-24  XBB  modify
  * </pre>
  *
  */
 public interface UserMapper {
 
-	public void add(User user) throws IOException; 
+	public void insertSingleUser(User user) throws IOException; 
+	
+	public User selectUserByUsername(String username) throws IOException;
+	
+	public User selectUserByEmail(String email) throws IOException;
+
 }
