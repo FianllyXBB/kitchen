@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,132 +8,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>登陆注册</title>
 	<!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link rel='stylesheet' href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+	<link href="../styles/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/kit.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" language="javascript" src="../js/jquery-1.11.3.js" charset="utf-8"></script>
+    <script type="text/javascript" language="javascript" src="../js/bootstrap.min.js" charset="utf-8"></script>
     <style type="text/css">
-        body{
-        padding-top: 50px;
-       }
-       .navbar-default{
-        background-color: #01aef0;
-       }
-       .navbar-brand {
-       	padding:0px;
-       }
-       .navbar-brand img{
-       	height: 50px;
-        width:68px;
-       }
-       .navbar-right li:first-child a{
-       	font-size:28px;
-       }
-       #content{
-        margin-top: 8px;
-       }
-       #content-right img{
-        height: 96px;
-        padding: 2px 0px;
-       }
-       #main{
-        clear: both;
-        margin-bottom: 15px;
-        margin-top: 8px;
-       }
-       .clearx{
-       	clear: both;
-       }
-       img {
-        max-width: 100%;
-        height: auto;
-      }
-      .fromfood{
-        height: 100px;
-       
-      }
-      .fromfood form{
-          padding-left: 10px;
-          border: 1px solid #dfdfdf;
-      }
-       .fromfood span{
-         margin: 6px 0px;
-         color: #ff6700;
-      }
-      #main .form-group{
-        width: 31%;
-      }
-      .form-group{
-      	min-width: 108px;
-      }
-      form span{
-       padding-right: 10px;
-      }
-      .width1{
-      	width: 50%;
-      }
-      @media screen and (max-width: 768px) { /*当屏幕尺寸小于768px时，应用下面的CSS样式*/
-          .carousel{
-            height: 188px;
-          }
-          .carousel img{
-            width: 100%;
-            
-          }
-          .carousel .item{
-           
-            height: 188px;
-          }
-          .heightauto img{
-            height: 138px;
-          }
-          /*小于 768px input[type=search]*/
-          #o-navbar-form {
-                display: inline;
-                width: 50%;
-                margin: 0 auto;
-                max-width: 168px;
-          }
-          #o-navbar-form  div{
-                display: inline-block;
-          }
-
-          #t-navbar-form {
-                display: none;
-          }
-          #o-navbar-form button{
-                padding: 6px 6px;
-          }
-         .navbar .form-control{
-            padding: 6px 6px;
-          }
-          .navbar .navbar-form{
-            padding :6px 6px;
-          }
-      }
-      @media screen and (min-width: 768px) { /*当屏幕尺寸大于7687px时，应用下面的CSS样式*/
-          .carousel{
-            height: 288px;
-          }
-          .carousel .item{
-           
-            height: 288px;
-          }
-          .carousel img{
-            width: 100%;
-            
-          }
-          .heightauto img{
-            height: 238px;
-          }
-           /*大于 768px input[type=search]*/
-          #o-navbar-form {
-                display: none;
-
-          }
-          #t-navbar-form {
-                display: block;
-          }
-
-      }
+        
         .carousel{
           width: 100%;
         }
@@ -180,7 +63,7 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header" style="text-align:center;">
         <a class="navbar-brand pull-left" href="#">
-           <img alt="Brand" src="images/logo.jpg">
+           <img alt="Brand" src="../images/logo.jpg">
         </a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -331,8 +214,9 @@
 
 
 <!-- 引入必要的jquery和bootstrap包-->
-<script src='http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js'></script>
-<script src='http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+<!-- <script src='http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js'></script>
+<script src='http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js'></script> -->
+
 <script type="text/javascript">
   
 </script>
