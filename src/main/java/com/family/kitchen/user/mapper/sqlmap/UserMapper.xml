@@ -34,4 +34,24 @@
 		insert into users
 		values (#{userid}, #{username}, #{password}, #{email}, #{phonenumber}, #{code}, #{state}, #{show})
 	</insert>
+	
+	<select id="selectSingleUser" parameterType="UserVo" resultType="UserAo">	
+		select * from users
+		<where>
+			<if test="userid != null and userid != ''">
+				userid = #{userid}
+			</if>
+			<if test="username != null and username != ''">
+				username = #{username}
+			</if>
+			<if test="email != null and email != ''">
+				email = #{email}
+			</if>
+			<if test="phonenumber != null and phonenumber != ''">
+				phonenumber = #{phonenumber}
+			</if>
+		</where>
+		
+	</select>
+	
 </mapper>

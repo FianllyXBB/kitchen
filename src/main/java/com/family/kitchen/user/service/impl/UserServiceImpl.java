@@ -5,9 +5,11 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.family.kitchen.user.ao.UserAo;
 import com.family.kitchen.user.mapper.UserMapper;
 import com.family.kitchen.user.po.User;
 import com.family.kitchen.user.service.UserService;
+import com.family.kitchen.user.web.vo.UserVo;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -27,6 +29,11 @@ public class UserServiceImpl implements UserService {
 	public User findUserByEmail(String email) throws IOException {
 		User user = userMapper.selectUserByEmail(email);
 		return user;
+	}
+
+	public UserAo findSingleUser(UserVo userVo) throws IOException {
+		UserAo userAo = userMapper.selectSingleUser(userVo);
+		return userAo;
 	}
 
 	

@@ -23,6 +23,15 @@ public class UserVo {
 	private boolean state;//是否激活
 	private boolean show;//保留字段
 	
+	public UserVo(){
+		
+	}
+	
+	public UserVo(String phonenumber, String username){
+		this.phonenumber = phonenumber;
+		this.username = username;
+	}
+	
 	public String getUserid() {
 		return userid;
 	}

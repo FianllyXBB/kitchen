@@ -1,7 +1,10 @@
 package com.family.kitchen.user.mapper;
 
 import java.io.IOException;
+
+import com.family.kitchen.user.ao.UserAo;
 import com.family.kitchen.user.po.User;
+import com.family.kitchen.user.web.vo.UserVo;
 
 /**
  * 
@@ -22,5 +25,7 @@ public interface UserMapper {
 	public User selectUserByUsername(String username) throws IOException;
 	
 	public User selectUserByEmail(String email) throws IOException;
+	
+	public UserAo selectSingleUser(UserVo userVo) throws IOException;
 
 }
