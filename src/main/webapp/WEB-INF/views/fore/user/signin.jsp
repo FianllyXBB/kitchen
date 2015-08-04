@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>登陆注册</title>
-	<!-- 新 Bootstrap 核心 CSS 文件 -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>登陆</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
 	<link href="../styles/jquery-ui.min.css" rel="stylesheet" type="text/css" />
     <link href="../styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="../styles/kit.css" rel="stylesheet" type="text/css" />
@@ -66,21 +66,11 @@
       console.log($("#productrow div:first-child"));
       $(".nav form").addClass("hidden");
       
-        
       $("#inputPhonenumber").bind("blur", function(){
-    	  var inputPhonenumber=$("#inputPhonenumber").val();
-    	
     	  if($("#inputPhonenumber").val() == ""){
     		  $("#confirmPhonenumber").text("手机号码不能为空"); 
     		  return ;
-    	  }else if(/^1[0-9]{10}$/.test(inputPhonenumber)){
-    		  $("#confirmPhonenumber").text("");
-    		  return;
-    	  }else{
-    		  $("#confirmPhonenumber").text("手机号格式不正确"); 
-    		  return ;
     	  }
-    	  
     	  $.ajax({
     		  type:'post',
     	  	  url:'/kitchen/user/validateForm.ms',
@@ -95,58 +85,10 @@
     	  });
       });
       
-      $("#inputUsername").bind("blur", function(){
-    	  var inputUsername=$("#inputUsername").val();
-    	  if($("#inputUsername").val() == ""){
-    		  $("#confirmUsername").text("用户名不能为空");
-    		  return ;
-    	  }else if(/^[A-Za-z0-9_\u554A-\u9C52]{3,20}$/.test(inputUsername)){
-    		  $("#confirmUsername").html("");
-    		  return;
-    	  }else{
-    		  $("#confirmUsername").html("用户名3-20位,字母数字下划线");
-    		  return;
-    	  }
-    	  $.ajax({
-    		  type:'post',
-    	  	  url:'/kitchen/user/validateForm.ms',
-    	  	  data:"username="+$("#inputUsername").val(),
-    	  	  success:function(data){
-    	  		  if(data == "true"){
-    	  			$("#confirmUsername").text("");  
-    	  		  }else{
-    	  			$("#confirmUsername").text("用户名已被注册");
-    	  		  }	  
-    	  	  }
-    	  });
-      });
-      $("#password").bind("blur",function(){
-    	    var password=$("#password").val();
-    		if(/^\S{6,32}$/.test(password)){
-    			$("#password_w").html("");
-    			
-    		}else{
-    			$("#password_w").html("6-32位字母数字下划线");
-    		   
-    		}
-    		
-      });
-      $("#password_db").bind("blur",function(){
-    	    var pwd=$("#password").val();
-    	    var password=$("#password_db").val();
-	  		if(pwd!=password){
-	  			$("#password_db_w").html('2次密码不一致');
-	  		
-	  		}else{
-	  			$("#password_db_w").html('');
-	  		}
-      });
+    
 });
   
-  function _change() {
-		var imgEle = document.getElementById("img");
-		imgEle.src = "/kitchen/user/getImageCode.ms?a=" + new Date().getTime();
-	}
+
 </script>
 </head>
 <body>
@@ -232,52 +174,29 @@
           <div id="land">
             <form class="form-horizontal" action="/kitchen/user/registSubmit.ms" method="post">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 col-xs-3 control-label">手机号：</label>
+                  <label for="inputEmail3" class="col-sm-2 col-xs-3 control-label">手机号/用户名：</label>
                   <div class="col-sm-7 col-xs-9">
-				     <input id="inputPhonenumber" type="text" class="form-control"  value="${userVo.phonenumber }"  placeholder="手机号" name="phonenumber">
-				     
+				     <input id="inputPhonenumber" type="text" class="form-control"  value="${userVo.phonenumber }" id="exampleInputEmail1" placeholder="手机号">
+				     <div class="wrong" id="phonenumber_w"></div>
 				     <font color="red"><label id="confirmPhonenumber">${errors.phonenumberError }</label></font>
 				  </div>
                   
                 </div>
-                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 col-xs-3 control-label">用户名：</label>
-                  <div class="col-sm-7 col-xs-9">
-                     <input id="inputUsername" type="text" class="form-control"  value="${userVo.username }"  placeholder="用户名" name="username">
-                    
-                     <font color="red"><label id="confirmUsername">${errors.usernameError }</label></font>
-                  </div>
-                </div>
+                
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 col-xs-3 control-label">密码：</label>
                   <div class="col-sm-7 col-xs-9">
-                    <input id="password" type="password" class="form-control" value="${userVo.password }"  placeholder="密码" name="password">
-                    
-                    <font color="red"><label id="password_w">${errors.passwordError }</label></font>
+                    <input id="password" type="password" class="form-control" value="${userVo.password }" id="exampleInputPassword1" placeholder="密码">
+                    <div class="wrong" id="password_w"></div>
+                    <font color="red"><label>${errors.passwordError }</label></font>
                   </div> 
                 </div>
-                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 col-xs-3 control-label">确认密码：</label>
-                  <div class="col-sm-7 col-xs-9">
-                    <input id="password_db" type="password" class="form-control" value="${userVo.password }"  placeholder="确认密码">
-                    <font color="red"><label id="password_db_w">${errors.passwordError }</label></font>
-                  </div>
-                </div>
+                
 	             
-	                <div class="form-group yanz">
-	                    <label for="inputEmail3" class="col-sm-2 col-xs-3 control-label">验证码：</label>
-		                <div class="col-sm-7 col-xs-9">
-						       <input type="text" name="imageCode" size="3" />
-						       <img id="img" src="/kitchen/user/getImageCode.ms" style="width: 72px; height: 37px" />
-						       <a href="javascript:_change()">看不清，换一张</a><br>
-						       <font color="red"><label>${errors.imageCodeError }</label></font>
-				               <br/>
-					    </div>
-				    </div>
 	                <div class="row zhuche">
-	                    <label for="inputEmail3" class="col-sm-2 control-label"></label>
+	                    <label for="inputEmail3" class="col-sm-2  control-label"></label>
 		                <div class="col-sm-7 col-xs-12">
-						    <button type="submit" id="register"   class="btn btn-warning btn-block">注册</button>
+						    <button type="submit" id="register" class="btn btn-warning btn-block">登陆</button>
 					    </div>
 				    </div>
 	                
@@ -299,28 +218,5 @@
  
 </div>
 <!-- /登陆主界面-->
-
-<!-- footer-->
-
-
-
-
-<!-- 引入必要的jquery和bootstrap包-->
-<!-- <script src='http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js'></script>
-<script src='http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js'></script> -->
-
-<script type="text/javascript">
-  
-</script>
 </body>
-
-
 </html>
-<script type="text/javascript">
-
-
-
-
-
-
-</script>
