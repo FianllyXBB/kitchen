@@ -72,13 +72,13 @@
     	
     	  if($("#inputPhonenumber").val() == ""){
     		  $("#confirmPhonenumber").text("手机号码不能为空"); 
-    		  return ;
+    		 
     	  }else if(/^1[0-9]{10}$/.test(inputPhonenumber)){
     		  $("#confirmPhonenumber").text("");
-    		  return;
+    		
     	  }else{
     		  $("#confirmPhonenumber").text("手机号格式不正确"); 
-    		  return ;
+    		  return false;
     	  }
     	  
     	  $.ajax({
@@ -99,13 +99,13 @@
     	  var inputUsername=$("#inputUsername").val();
     	  if($("#inputUsername").val() == ""){
     		  $("#confirmUsername").text("用户名不能为空");
-    		  return ;
+    		 
     	  }else if(/^[A-Za-z0-9_\u554A-\u9C52]{3,20}$/.test(inputUsername)){
     		  $("#confirmUsername").html("");
-    		  return;
+    		  
     	  }else{
     		  $("#confirmUsername").html("用户名3-20位,字母数字下划线");
-    		  return;
+    		 return false;
     	  }
     	  $.ajax({
     		  type:'post',
