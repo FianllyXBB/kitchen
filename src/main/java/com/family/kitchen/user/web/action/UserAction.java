@@ -104,5 +104,23 @@ public class UserAction {
 		return "false";
 	}
 	
+	@RequestMapping("/signin")
+	public ModelAndView signin() throws IOException {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/fore/user/signin");
+		return modelAndView;
+	}
+	
+	@RequestMapping("/signinSubmit")
+	public ModelAndView signinSubmit(String username, String password) throws IOException {
+		UserAo userAo = userService.signin(username);
+		ModelAndView modelAndView = new ModelAndView();
+		if (userAo != null && userAo.getPassword().equals(password)) {
+			modelAndView.addObject("userAo", userAo);
+			modelAndView.setViewName("/test/user/loginSuccess");
+			return modelAndView;
+		}
+		return modelAndView;
+	}
 	
 }

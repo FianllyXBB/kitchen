@@ -15,5 +15,7 @@ public interface UserService {
 	public User findUserByEmail(String email) throws IOException;
 	
 	public UserAo findSingleUser(UserVo userVo) throws IOException;
+
+	public UserAo signin(String username) throws IOException;
 	
 }

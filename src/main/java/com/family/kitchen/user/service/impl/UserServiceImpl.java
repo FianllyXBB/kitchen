@@ -36,6 +36,13 @@ public class UserServiceImpl implements UserService {
 		return userAo;
 	}
 
+	public UserAo signin(String username) throws IOException {
+		UserVo userVo = new UserVo();
+		userVo.setUsername(username);
+		UserAo userAo = userMapper.selectSingleUser(userVo);
+		return userAo;
+	}
+
 	
 
 }

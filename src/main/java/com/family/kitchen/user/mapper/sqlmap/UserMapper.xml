@@ -50,6 +50,9 @@
 			<if test="phonenumber != null and phonenumber != ''">
 				phonenumber = #{phonenumber}
 			</if>
+			<if test="password != null and password != ''">
+				password = #{password}
+			</if>
 		</where>
 		
 	</select>
