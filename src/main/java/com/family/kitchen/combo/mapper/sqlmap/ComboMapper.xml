@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.family.kitchen.combo.mapper.ComboMapper">
+	
+	<select id="selectAll" parameterType="ComboAo" resultType="ComboAo">
+		select * from combo
+		<where>
+			<if test="minnum != null and minnum != '' and pagesize != null and pagesize != ''">
+				limit #{minnum}, #{pagesize}
+				<if test="ordercolumn != null and ordercolumn != ''">
+					order by ${ordercolumn}
+					<if test="ordermethod != null and ordermethod != ''">
+						${ordermethod}
+					</if>
+				</if>
+			</if>
+		</where>
+	</select>
+	
+</mapper>
