@@ -36,9 +36,13 @@ public class UserServiceImpl implements UserService {
 		return userAo;
 	}
 
-	public UserAo signin(String username) throws IOException {
+	public UserAo signin(String username, String phonenumber) throws IOException {
 		UserVo userVo = new UserVo();
-		userVo.setUsername(username);
+		if (username != null && username.trim() != "") {
+			userVo.setUsername(username);
+		}else if (phonenumber != null && phonenumber.trim() != "") {
+			userVo.setPhonenumber(phonenumber);
+		}		
 		UserAo userAo = userMapper.selectSingleUser(userVo);
 		return userAo;
 	}

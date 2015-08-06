@@ -112,14 +112,39 @@ public class UserAction {
 	}
 	
 	@RequestMapping("/signinSubmit")
-	public ModelAndView signinSubmit(String username, String password) throws IOException {
-		UserAo userAo = userService.signin(username);
+	public ModelAndView signinSubmit(HttpServletRequest request , String username, String password, String imageCode) throws IOException {
 		ModelAndView modelAndView = new ModelAndView();
+		Map<String, String> errors = new HashMap<String, String>();
+		if (imageCode != null) {
+			if (imageCode.trim()=="" || !imageCode.equalsIgnoreCase((String) request.getSession().getAttribute("session_imageCode"))) {
+				errors.put("imageCodeError", "验证码错误");
+				modelAndView.addObject("username", username);
+				modelAndView.addObject("password", password);
+				modelAndView.addObject("errors", errors);
+				modelAndView.setViewName("/fore/user/signin");
+				return modelAndView;
+			}
+		}
+		
+		UserAo userAo = userService.signin(username, null);
+		
 		if (userAo != null && userAo.getPassword().equals(password)) {
 			modelAndView.addObject("userAo", userAo);
-			modelAndView.setViewName("/test/user/loginSuccess");
+			modelAndView.setViewName("/fore/combo/showpage");
 			return modelAndView;
 		}
+		userAo = userService.signin(null, username);
+		if (userAo != null && userAo.getPassword().equals(password)) {
+			modelAndView.addObject("userAo", userAo);
+			modelAndView.setViewName("/fore/combo/showpage");
+			return modelAndView;
+		}
+		errors.put("error", "用户名/手机号码 或 密码错误");
+		modelAndView.addObject("errors", errors);
+		modelAndView.addObject("username", username);
+		modelAndView.addObject("password", password);
+		modelAndView.addObject("loginAgain", true);
+		modelAndView.setViewName("/fore/user/signin");
 		return modelAndView;
 	}
 	

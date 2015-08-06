@@ -9,5 +9,7 @@
 <body>
 登录成功：<br>
 username:${userAo.username }
+errors:${errors.error }
+firstLogin:${loginAgain }
 </body>
 </html>

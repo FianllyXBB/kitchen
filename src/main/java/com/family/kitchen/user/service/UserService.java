@@ -16,6 +16,6 @@ public interface UserService {
 	
 	public UserAo findSingleUser(UserVo userVo) throws IOException;
 
-	public UserAo signin(String username) throws IOException;
+	public UserAo signin(String username, String phonenumber) throws IOException;
 	
 }
