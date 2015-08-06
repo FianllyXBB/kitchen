@@ -121,6 +121,7 @@ public class UserAction {
 				modelAndView.addObject("username", username);
 				modelAndView.addObject("password", password);
 				modelAndView.addObject("errors", errors);
+				modelAndView.addObject("loginAgain", true);
 				modelAndView.setViewName("/fore/user/signin");
 				return modelAndView;
 			}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,37 +59,37 @@
 	        .registerr h5{
 	        margin-top:4px;
 	        }
+	     
     </style>
 <script type="text/javascript">
 
-  $(document).ready(function(){
+ $(document).ready(function(){
       $("#productrow >div").addClass("templet");
       console.log($("#productrow div:first-child"));
       $(".nav form").addClass("hidden");
       
+     
       $("#inputPhonenumber").bind("blur", function(){
     	  if($("#inputPhonenumber").val() == ""){
     		  $("#confirmPhonenumber").text("手机号码不能为空"); 
     		  return ;
     	  }
-    	  $.ajax({
-    		  type:'post',
-    	  	  url:'/kitchen/user/validateForm.ms',
-    	  	  data:"phonenumber="+$("#inputPhonenumber").val(),
-    	  	  success:function(data){
-    	  		  if(data == "true"){
-    	  			$("#confirmPhonenumber").text("");  
-    	  		  }else{
-    	  			$("#confirmPhonenumber").text("手机号码已被注册");
-    	  		  }	  
-    	  	  }
-    	  });
+    	
       });
-      
+      $("#password").bind("blur", function(){
+	      if($("#password").val() == ""){
+			  $("#password_w").text("密码不能为空"); 
+			  return ;
+		  }
+      });
+     
     
-});
+}); 
   
-
+ function _change() {
+		var imgEle = document.getElementById("img");
+		imgEle.src = "/kitchen/user/getImageCode.ms?a=" + new Date().getTime();
+	}
 </script>
 </head>
 <body>
@@ -172,13 +173,13 @@
           </div>
           
           <div id="land">
-            <form class="form-horizontal" action="/kitchen/user/registSubmit.ms" method="post">
+            <form class="form-horizontal" action="/kitchen/user/signinSubmit.ms" method="post">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 col-xs-3 control-label">手机号/用户名：</label>
                   <div class="col-sm-7 col-xs-9">
-				     <input id="inputPhonenumber" type="text" class="form-control"  value="${userVo.phonenumber }" id="exampleInputEmail1" placeholder="手机号">
-				     <div class="wrong" id="phonenumber_w"></div>
-				     <font color="red"><label id="confirmPhonenumber">${errors.phonenumberError }</label></font>
+				     <input id="inputPhonenumber" type="text" name="username" class="form-control"  value="${username }" id="exampleInputEmail1" placeholder="手机号" >
+				     
+				     <font color="red"><label id="confirmPhonenumber">${errors.error }</label></font>
 				  </div>
                   
                 </div>
@@ -186,17 +187,31 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 col-xs-3 control-label">密码：</label>
                   <div class="col-sm-7 col-xs-9">
-                    <input id="password" type="password" class="form-control" value="${userVo.password }" id="exampleInputPassword1" placeholder="密码">
-                    <div class="wrong" id="password_w"></div>
-                    <font color="red"><label>${errors.passwordError }</label></font>
+                  	<input type="text" style="display:none;">
+                  	<input type="password" style="display:none;">
+                    <input id="password" type="password" name="password" class="form-control" value="${password }" id="exampleInputPassword1" placeholder="密码" >
+                   
+                    <font color="red"><label id="password_w">${errors.error }</label></font>
                   </div> 
                 </div>
-                
-	             
+               <c:if test="${loginAgain == true }">
+                 <div class="form-group yanz">
+	                    <label for="inputEmail3" class="col-sm-2 col-xs-3 control-label">验证码：</label>
+		                <div class="col-sm-7 col-xs-9">
+						       <input type="text" name="imageCode" size="3" />
+						       <img id="img" src="/kitchen/user/getImageCode.ms" style="width: 72px; height: 37px" />
+						       <a href="javascript:_change()">看不清，换一张</a><br>
+						       <font color="red"><label>${errors.imageCodeError }</label></font>
+				               <br/>
+					    </div>
+				    </div>
+				  </c:if>
+	 
 	                <div class="row zhuche">
 	                    <label for="inputEmail3" class="col-sm-2  control-label"></label>
 		                <div class="col-sm-7 col-xs-12">
 						    <button type="submit" id="register" class="btn btn-warning btn-block">登陆</button>
+						    
 					    </div>
 				    </div>
 	                
