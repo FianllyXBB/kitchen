@@ -1,6 +1,7 @@
 package com.family.kitchen.user.mapper;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.family.kitchen.user.ao.UserAo;
 import com.family.kitchen.user.po.User;
@@ -28,4 +29,5 @@ public interface UserMapper {
 	
 	public UserAo selectSingleUser(UserVo userVo) throws IOException;
 
+	public void insertUserList(List<User> list) throws IOException;
 }

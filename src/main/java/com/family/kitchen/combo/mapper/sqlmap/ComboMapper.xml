@@ -3,19 +3,37 @@
 
 <mapper namespace="com.family.kitchen.combo.mapper.ComboMapper">
 	
-	<select id="selectAll" parameterType="ComboAo" resultType="ComboAo">
+	<select id="selectAll" parameterType="ComboVo" resultType="ComboAo">
 		select * from combo
-		<where>
-			<if test="minnum != null and minnum != '' and pagesize != null and pagesize != ''">
-				limit #{minnum}, #{pagesize}
-				<if test="ordercolumn != null and ordercolumn != ''">
-					order by ${ordercolumn}
-					<if test="ordermethod != null and ordermethod != ''">
-						${ordermethod}
-					</if>
-				</if>
-			</if>
-		</where>
+		order by
+		<choose>
+			<when test="ordercolumn != null and ordercolumn != ''">
+				${ordercolumn}
+			</when>
+			<otherwise>
+				comboid
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="ordermethod != null and ordermethod != ''">
+				${ordermethod}
+			</when>
+			<otherwise>
+				asc
+			</otherwise>
+		</choose>
+		limit #{minnum},#{pagesize}
+	</select>
+	
+	<insert id="insertComboList" parameterType="ArrayList">
+		insert into combo(comboid,comboname,comboimage,combodescription,comboprice,combonum,comborenum) values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.comboid}, #{item.comboname}, #{item.comboimage}, #{item.combodescription}, #{item.comboprice}, #{item.combonum}, #{item.comborenum})
+		</foreach>
+	</insert>
+	
+	<select id="selectCount" resultType="Integer">
+		select count(1) from combo
 	</select>
 	
 </mapper>

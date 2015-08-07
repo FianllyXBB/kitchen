@@ -1,46 +1,74 @@
 package com.family.kitchen.combo.ao;
 
-import com.family.kitchen.combo.po.Combo;
+import com.family.kitchen.base.BaseEntity;
 
-public class ComboAo extends Combo {
-
-	 private Integer pagenumber; //页码
-	 private Integer pagesize; //一页大小
-	 private String ordercolumn; //排序列
-	 private String ordermethod;//排序方式
-	 
-	 private Integer minnum;//分页第一个数据
-	 
-	public Integer getPagenumber() {
-		return pagenumber;
+/**
+ * 
+ * <p>Title: 基本套餐扩展类</p>
+ * <p>Copyright: </p> 
+ * @author XBB 
+ * @date 2015年8月7日 上午9:08:51 Create
+ * @version V1.0 
+ * <pre>Histroy:
+ *       2015年8月7日 上午9:08:51  XBB  Create
+ * </pre>
+ *
+ */
+public class ComboAo extends BaseEntity{	 
+	private String comboid;
+	private String comboname;
+	private String comboimage;
+	private String combodescription;
+	private Double comboprice;
+	private Integer combonum;  // 总份数
+	private Integer comborenum;//剩余份数
+	private Boolean show;
+	public String getComboid() {
+		return comboid;
 	}
-	public void setPagenumber(Integer pagenumber) {
-		this.pagenumber = pagenumber;
+	public void setComboid(String comboid) {
+		this.comboid = comboid;
 	}
-	public Integer getPagesize() {
-		return pagesize;
+	public String getComboname() {
+		return comboname;
 	}
-	public void setPagesize(Integer pagesize) {
-		this.pagesize = pagesize;
+	public void setComboname(String comboname) {
+		this.comboname = comboname;
 	}
-	public String getOrdercolumn() {
-		return ordercolumn;
+	public String getComboimage() {
+		return comboimage;
 	}
-	public void setOrdercolumn(String ordercolumn) {
-		this.ordercolumn = ordercolumn;
+	public void setComboimage(String comboimage) {
+		this.comboimage = comboimage;
 	}
-	public String getOrdermethod() {
-		return ordermethod;
+	public String getCombodescription() {
+		return combodescription;
 	}
-	public void setOrdermethod(String ordermethod) {
-		this.ordermethod = ordermethod;
+	public void setCombodescription(String combodescription) {
+		this.combodescription = combodescription;
 	}
-	public Integer getMinnum() {
-		return minnum;
+	public Double getComboprice() {
+		return comboprice;
 	}
-	public void setMinnum(Integer minnum) {
-		this.minnum = minnum;
+	public void setComboprice(Double comboprice) {
+		this.comboprice = comboprice;
 	}
-	 
-	 
+	public Integer getCombonum() {
+		return combonum;
+	}
+	public void setCombonum(Integer combonum) {
+		this.combonum = combonum;
+	}
+	public Integer getComborenum() {
+		return comborenum;
+	}
+	public void setComborenum(Integer comborenum) {
+		this.comborenum = comborenum;
+	}
+	public Boolean getShow() {
+		return show;
+	}
+	public void setShow(Boolean show) {
+		this.show = show;
+	}
 }

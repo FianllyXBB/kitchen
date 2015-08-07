@@ -2,16 +2,28 @@ package com.family.kitchen.combo.po;
 
 import com.family.kitchen.base.BaseEntity;
 
+/**
+ * 
+ * <p>Title: Combo类</p>
+ * <p>Copyright: </p> 
+ * @author XBB 
+ * @date 2015年8月7日 上午10:15:00 Create
+ * @version V1.0 
+ * <pre>Histroy:
+ *       2015年8月7日 上午10:15:00  XBB  Create
+ * </pre>
+ *
+ */
 public class Combo extends BaseEntity {
-	
+
 	private String comboid;
 	private String comboname;
 	private String comboimage;
 	private String combodescription;
-	private double comboprice;
-	private int combonum;  // 总份数
-	private int comborenum;//剩余份数
-	private boolean show;
+	private Double comboprice;
+	private Integer combonum;  // 总份数
+	private Integer comborenum;//剩余份数
+	private Boolean show;
 	public String getComboid() {
 		return comboid;
 	}
@@ -36,30 +48,31 @@ public class Combo extends BaseEntity {
 	public void setCombodescription(String combodescription) {
 		this.combodescription = combodescription;
 	}
-	public double getComboprice() {
+	public Double getComboprice() {
 		return comboprice;
 	}
-	public void setComboprice(double comboprice) {
+	public void setComboprice(Double comboprice) {
 		this.comboprice = comboprice;
 	}
-	public int getCombonum() {
+	public Integer getCombonum() {
 		return combonum;
 	}
-	public void setCombonum(int combonum) {
+	public void setCombonum(Integer combonum) {
 		this.combonum = combonum;
 	}
-	public int getComborenum() {
+	public Integer getComborenum() {
 		return comborenum;
 	}
-	public void setComborenum(int comborenum) {
+	public void setComborenum(Integer comborenum) {
 		this.comborenum = comborenum;
 	}
-	public boolean getShow() {
+	public Boolean getShow() {
 		return show;
 	}
-	public void setShow(boolean show) {
+	public void setShow(Boolean show) {
 		this.show = show;
 	}
+	
 	
 	
 }

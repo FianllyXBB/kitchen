@@ -1,6 +1,7 @@
 package com.family.kitchen.user.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.family.kitchen.user.ao.UserAo;
 import com.family.kitchen.user.po.User;
@@ -17,5 +18,7 @@ public interface UserService {
 	public UserAo findSingleUser(UserVo userVo) throws IOException;
 
 	public UserAo signin(String username, String phonenumber) throws IOException;
+	
+	public void insertUserList(List<User> list) throws IOException;
 	
 }

@@ -1,6 +1,7 @@
 package com.family.kitchen.user.service.impl;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +46,10 @@ public class UserServiceImpl implements UserService {
 		}		
 		UserAo userAo = userMapper.selectSingleUser(userVo);
 		return userAo;
+	}
+
+	public void insertUserList(List<User> list) throws IOException {
+		userMapper.insertUserList(list);
 	}
 
 	
