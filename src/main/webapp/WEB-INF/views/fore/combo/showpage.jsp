@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -15,6 +15,9 @@
     <script type="text/javascript" language="javascript" src="../js/jquery-1.11.3.js" charset="utf-8"></script>
     <script type="text/javascript" language="javascript" src="../js/bootstrap.min.js" charset="utf-8"></script>
     <style type="text/css">
+        .mainmm{
+        margin-bottom:10px;
+        }
         .colormain{
           padding-top:8px;
           background-color:#01aef0;
@@ -65,7 +68,7 @@
 		  position: fixed;
 		 
 		  bottom: 0px;
-		  width: 188px;
+		  width: 288px;
 		  height: auto;
 		  right:10%;
 		 
@@ -79,6 +82,7 @@
          margin-bottom:0px;
          }
          #mycatsum{
+         padding:0px 15px;
          background-color:#f7f7f7;
          }
          .payx{
@@ -92,6 +96,7 @@
          margin:0px;
          }
          #mycattital ul li{
+         padding:0px 15px;
           list-style-type:none;
          }
         .mycat-input-sum{
@@ -117,6 +122,51 @@
 		
 		  font-size: 12px;
         }
+        .bombo-name{
+        width:126px;
+        }
+        .sun-rmb-style{
+        text-align:center;
+        width:45px;
+        margin-left:8px;
+        }
+        .sun-rmb-style:before{
+        content: "¥";
+        }
+         .cut-btn{
+        visibility:hidden;
+        }
+        .add-btn {
+        visibility:hidden;
+        }
+        .delete-btn{
+        display:none;
+        
+        }
+        .clearfix:hover .add-btn{
+        visibility:visible;
+        cursor: pointer;
+        }
+        .clearfix:hover .cut-btn{
+        visibility:visible;
+        cursor: pointer;
+        }
+        .clearfix:hover .delete-btn{
+        
+        display: block;
+        cursor: pointer;
+        }
+        .buy-btn{
+          margin-top: 5px;
+		  text-align: center;
+		  border: 1px solid #01aef0;;
+		  width: 68px;
+		  border-radius: 4px;
+        }
+        .buy-btn:hover{
+          cursor: pointer;
+          background-color: #f0ad4e;
+        }
     </style>
 <script type="text/javascript">
 
@@ -124,6 +174,7 @@
       $("#productrow >div").addClass("templet");
       console.log($("#productrow div:first-child"));
       $(".nav form").addClass("hidden");
+     
 });
 </script>
 </head>
@@ -176,17 +227,33 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-      <ul class="nav navbar-nav navbar-right">
+      <c:choose>  
+		  
+		<c:when test="${userAo.username == null||userAo.username==' '}">   
+		    
+		    <ul class="nav navbar-nav navbar-right">
       	
-      	<li><a href="#">52694419</a></li>
-        <li><a href="#">注册</a></li>
-        <li><a href="#">登陆</a></li>
-      </ul>
+		      	<li><a href="#">52694419</a></li>
+		        <li><a href="#">注册</a></li>
+		        <li><a href="#">登陆</a></li>
+		    </ul> 
+		</c:when>  
+		     
+		<c:otherwise>  
+		     <ul class="nav navbar-nav navbar-right">
+      	
+		      	<li><a href="#">52694419</a></li>
+		        <li><a href="#">${userAo.username }</a></li>
+		        <li><a href="#">退出</a></li>
+		    </ul>
+		</c:otherwise>  
+	  </c:choose>  
+      
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container">
+<div class="container mainmm">
   <div class="row">
      <div class="col-md-9 col-lg-9"><!-- 9主 -->
 		<!--轮播主界面 -->
@@ -277,7 +344,11 @@
 		                  <div class="row">
 		                     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
 		                    <h5 class="pull-left">美味可口，主厨推荐</h5>
-		                    <span class="pull-right">￥<span>15</span></span>
+		                    <div class="pull-right buy-btn">
+		                      <a>
+		                         <span>15</span>
+		                      </a>
+		                    </div>
 		                   </div>
 		                 </div>
 		                 <div class="row clearx"> 
@@ -468,15 +539,39 @@
       
       <ul>
       <!--每个套餐显示模板 -->
-        <li>
-           <div class="pull-left">唐僧肉</div>
+        <li class="clearfix">
+           <div class="pull-left bombo-name">唐僧肉</div>
            <div class="pull-left">
-              <a class="mycat-sum">+</a>
-              <input class="mycat-input-sum" type="text" value="0">
-              <a class="mycat-sum">-</a>
+              <a class="mycat-sum cut-btn">-</a>
+              <input class="mycat-input-sum sum-num" type="text" value="0">
+              <a class="mycat-sum add-btn">+</a>
            </div>
-           <div class="pull-left">15</div>
-           <a class="pull-right">×</a>
+           <div class="pull-left sun-rmb-style sun-rmb">1500</div>
+           <a class="pull-right delete-btn">×</a>
+           
+        </li>
+        <!--每个套餐显示模板 -->
+        <li class="clearfix" >
+           <div class="pull-left bombo-name">唐僧肉</div>
+           <div class="pull-left add-delete">
+              <a class="mycat-sum cut-btn">-</a>
+              <input class="mycat-input-sum sum-num" type="text" value="0">
+              <a class="mycat-sum add-btn">+</a>
+           </div>
+           <div class="pull-left sun-rmb-style sun-rmb">15</div>
+           <a class="pull-right delete-btn">×</a>
+           
+        </li>
+        <!--每个套餐显示模板 -->
+        <li class="clearfix">
+           <div class="pull-left bombo-name">唐僧肉</div>
+           <div class="pull-left">
+              <a class="mycat-sum cut-btn">-</a>
+              <input class="mycat-input-sum sum-num" type="text" value="0">
+              <a class="mycat-sum add-btn">+</a>
+           </div>
+           <div class="pull-left sun-rmb-style sun-rmb">155</div>
+           <a class="pull-right delete-btn">×</a>
            
         </li>
       </ul>

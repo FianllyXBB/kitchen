@@ -72,6 +72,7 @@
     	
     	  if($("#inputPhonenumber").val() == ""){
     		  $("#confirmPhonenumber").text("手机号码不能为空"); 
+    		  return false;
     		 
     	  }else if(/^1[0-9]{10}$/.test(inputPhonenumber)){
     		  $("#confirmPhonenumber").text("");
@@ -99,6 +100,7 @@
     	  var inputUsername=$("#inputUsername").val();
     	  if($("#inputUsername").val() == ""){
     		  $("#confirmUsername").text("用户名不能为空");
+    		  return false;
     		 
     	  }else if(/^[A-Za-z0-9_\u554A-\u9C52]{3,20}$/.test(inputUsername)){
     		  $("#confirmUsername").html("");
