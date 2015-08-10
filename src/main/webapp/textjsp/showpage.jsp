@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -15,7 +15,13 @@
     <script type="text/javascript" language="javascript" src="../js/jquery-1.11.3.js" charset="utf-8"></script>
     <script type="text/javascript" language="javascript" src="../js/bootstrap.min.js" charset="utf-8"></script>
     <style type="text/css">
-       
+        .mainmm{
+        margin-bottom:10px;
+        }
+        .colormain{
+          padding-top:8px;
+          background-color:#01aef0;
+        }
         .carousel{
           width: 100%;
         }
@@ -41,31 +47,14 @@
          #footer{
           padding-bottom: 15px;
          }
-         .container{
-         max-width:960px;
-         }
+        
          #rightflow{
-          background-color:red;
-          z-index: 99999;
-		  display: block;
-		  position: fixed;
-		  background-color: red;
-		  right: 0px;
-		  width: 188px;
+          background-color:#01aef0;
+		  width: 100%;
 		  height: 268px;
-		  top: 168px;
+		
          }
-         #leftflow{
-          background-color:red;
-          z-index: 99999;
-		  display: block;
-		  position: fixed;
-		  background-color: red;
-		  left: 0px;
-		  width: 188px;
-		  height: 268px;
-		  top: 168px;
-         }
+         
          #leftflow,#rightflow a{
         
           height:198px;
@@ -73,16 +62,111 @@
           display:block;
          }
          #bottomflow{
-          background-color:red;
+         
           z-index: 99999;
 		  display: block;
 		  position: fixed;
-		  background-color: red;
+		 
 		  bottom: 0px;
-		  width: 188px;
-		  height: autopx;
-		  right:0px;
+		  width: 288px;
+		  height: auto;
+		  right:10%;
+		 
          }
+         #mycattitle{
+         text-align:center;
+         margin-top:8px;
+         background-color:#f7f7f7;
+         }
+         #mycattitle p{
+         margin-bottom:0px;
+         }
+         #mycatsum{
+         padding:0px 15px;
+         background-color:#f7f7f7;
+         }
+         .payx{
+         background-color:white;
+         }
+         #mycattital{
+         background-color:white;
+         }
+         #mycattital ul{
+         padding:0px;
+         margin:0px;
+         }
+         #mycattital ul li{
+         padding:0px 15px;
+          list-style-type:none;
+         }
+        .mycat-input-sum{
+          display: inline-block;
+		  width: 18px;
+		  height: 18px;
+		  line-height: 18px;
+		  border: 1px solid #ddd;
+		  text-align: center;
+		  vertical-align: bottom;
+		
+        }
+        .mycat-sum{
+          display: inline-block;
+		  width: 18px;
+		  height: 18px;
+		  line-height: 18px;
+		  border: 1px solid #ddd;
+		  text-align: center;
+          background: #f5f5f5;
+		  color: #999;
+		  vertical-align: bottom;
+		
+		  font-size: 12px;
+        }
+        .bombo-name{
+        width:126px;
+        }
+        .sun-rmb-style{
+        text-align:center;
+        width:45px;
+        margin-left:8px;
+        }
+        .sun-rmb-style:before{
+        content: "¥";
+        }
+         .cut-btn{
+        visibility:hidden;
+        }
+        .add-btn {
+        visibility:hidden;
+        }
+        .delete-btn{
+        display:none;
+        
+        }
+        .clearfix:hover .add-btn{
+        visibility:visible;
+        cursor: pointer;
+        }
+        .clearfix:hover .cut-btn{
+        visibility:visible;
+        cursor: pointer;
+        }
+        .clearfix:hover .delete-btn{
+        
+        display: block;
+        cursor: pointer;
+        }
+        .buy-btn{
+          margin-top: 5px;
+		  text-align: center;
+		  border: 1px solid #01aef0;;
+		  width: 68px;
+		  border-radius: 4px;
+        }
+        .buy-btn:hover{
+          cursor: pointer;
+          background-color: #f0ad4e;
+        }
     </style>
 <script type="text/javascript">
 
@@ -90,6 +174,7 @@
       $("#productrow >div").addClass("templet");
       console.log($("#productrow div:first-child"));
       $(".nav form").addClass("hidden");
+     
 });
 </script>
 </head>
@@ -142,225 +227,261 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-      <ul class="nav navbar-nav navbar-right">
+      <c:choose>  
+		  
+		<c:when test="${userAo.username == null||userAo.username==' '}">   
+		    
+		    <ul class="nav navbar-nav navbar-right">
       	
-      	<li><a href="#">52694419</a></li>
-        <li><a href="#">注册</a></li>
-        <li><a href="#">登陆</a></li>
-      </ul>
+		      	<li><a href="#">52694419</a></li>
+		        <li><a href="#">注册</a></li>
+		        <li><a href="#">登陆</a></li>
+		    </ul> 
+		</c:when>  
+		     
+		<c:otherwise>  
+		     <ul class="nav navbar-nav navbar-right">
+      	
+		      	<li><a href="#">52694419</a></li>
+		        <li><a href="#">${userAo.username }</a></li>
+		        <li><a href="#">退出</a></li>
+		    </ul>
+		</c:otherwise>  
+	  </c:choose>  
+      
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<!--轮播主界面 -->
-<div id="content">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-8 col-xs-12">
-             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-  </ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="../images/05.jpg" alt="...">
-      <div class="carousel-caption">
-        <p>说明一</p>
-      </div>
-    </div>
-    <div class="item">
-      <img src="../images/06.jpg" alt="...">
-      <div class="carousel-caption">
-        <p>说明er</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="../images/07.jpg" alt="...">
-      <div class="carousel-caption">
-        <p>说明san</p>
-      </div>
-    </div>
-    <div class="item">
-      <img src="../images/02.jpg" alt="...">
-      <div class="carousel-caption">
-        <p>说明四</p>
-      </div>
-    </div>
-   
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-         </div>
-         <div id="content-right" class="col-md-4 col-xs-12">
-           <a href="#" target="_blank"><img src="../images/01.jpg"></a>
-           <a href="#" target="_blank"><img src="../images/02.jpg"></a>
-           <a href="#" target="_blank">企业团体个性化定制</a>
-         </div>
-      </div>
-   </div>
-</div><!--/轮播主界面 -->
-
-<div id="main">
-<div class="container">
+<div class="container mainmm">
   <div class="row">
-      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-        <div class="row" id="productrow">
-          <!-- 单个基本模块 -->
-           <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4 ">
-            <div class="row" >
-              <!-- 图片展示 -->
-              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                <a href="#" class="heightauto">
-                  <img  src="../images/01.jpg" title="正宗海南特小凤西瓜，肉质细腻脆甜多汁！">
-                </a>
-
-              </div><!-- 1-->
-              <!-- 表单 -->
-              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 fromfood">
-                
-                <form role="form">
-                  <div class="row">
-                     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                    <h5 class="pull-left">美味可口，主厨推荐</h5>
-                    <span class="pull-right">￥<span>15</span></span>
-                   </div>
-                 </div>
-                 <div class="row clearx"> 
-                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
-                        <span class="pull-left">赠品：</span>
-                       <div class="form-group pull-left" >
-                         <select  class="form-control">
-                            <option>统一红茶330ml</option>
-                            <option>统一绿茶330ml</option>
-                            <option>冰糖雪梨330ml</option>
-                            
-                      </select>
-                     </div>
-                    </div>
-                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-                      <a href="#">美味零食</a>
-                       
-                     </div>
-                    </div>
-                </form>
-              </div><!-- 表单 -->
-             
-
-              </div> <!-- /row-->
-            </div>
-          <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4 ">
-            <div class="row">
-              <!-- 图片展示 -->
-              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                <a href="#" class="heightauto img-responsive">
-                  <img  src="../images/02.jpg" title="正宗海南特小凤西瓜，肉质细腻脆甜多汁！">
-                </a>
-
-              </div>
-              <!-- 表单 -->
-              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 fromfood">
-                
-                <form role="form">
-                	<div class="row">
-                		 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                    <h5 class="pull-left">美味可口，主厨推荐</h5>
-                    <span class="pull-right">￥<span>15</span></span>
-                   </div>
-                 </div>
-                 <div class="row clearx"> 
-                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
-	                    	<span class="pull-left">赠品：</span>
-	                     <div class="form-group pull-left" >
-	                       <select  class="form-control">
-		                        <option>统一红茶330ml</option>
-		                        <option>统一绿茶330ml</option>
-		                        <option>冰糖雪梨330ml</option>
-		                        
-                      </select>
-                     </div>
-                    </div>
-                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-	                    <a href="#">美味零食</a>
-	                     
-                     </div>
-                    </div>
-                   </div>
-                 </form>
-
-              </div>
-            </div>
-          <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4 ">
-            <div class="row">
-              <!-- 图片展示 -->
-              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                <a href="#" class="heightauto">
-                  <img  src="../images/03.jpg" title="正宗海南特小凤西瓜，肉质细腻脆甜多汁！">
-                </a>
-
-              </div>
-              <!-- 表单 -->
-              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 fromfood">
-                
-                <form role="form">
-                	<div class="row">
-                		 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                    <h5 class="pull-left">美味可口，主厨推荐</h5>
-                    <span class="pull-right">￥<span>15</span></span>
-                   </div>
-                 </div>
-                 <div class="row clearx"> 
-                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
-	                    	<span class="pull-left">赠品：</span>
-	                     <div class="form-group pull-left" >
-	                       <select  class="form-control">
-		                        <option>统一红茶330ml</option>
-		                        <option>统一绿茶330ml</option>
-		                        <option>冰糖雪梨330ml</option>
-		                        
-                      </select>
-                     </div>
-                    </div>
-                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-	                    <a href="#">美味零食</a>
-	                     
-                     </div>
-                    </div>
-                   </div>
-                 </form>
-
-              </div>
-            </div>
-         
-          </div>
-        
-          
-         
-
-       
-
-
-        </div>
-       </div>
-      </div> 
-     </div>
-  </div>
-
-</div><!-- /row-->
+     <div class="col-md-9 col-lg-9"><!-- 9主 -->
+		<!--轮播主界面 -->
+		<div id="content">
+		   
+		      <div class="row">
+		         <div class="col-md-8 col-xs-12">
+		             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
+						  <!-- Indicators -->
+						  <ol class="carousel-indicators">
+						    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+						    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+						  </ol>
+		
+						  <!-- Wrapper for slides -->
+						  <div class="carousel-inner" role="listbox">
+						    <div class="item active">
+						      <img src="../images/05.jpg" alt="...">
+						      <div class="carousel-caption">
+						        <p>说明一</p>
+						      </div>
+						    </div>
+						    <div class="item">
+						      <img src="../images/06.jpg" alt="...">
+						      <div class="carousel-caption">
+						        <p>说明er</p>
+						      </div>
+						    </div>
+						
+						    <div class="item">
+						      <img src="../images/07.jpg" alt="...">
+						      <div class="carousel-caption">
+						        <p>说明san</p>
+						      </div>
+						    </div>
+						    <div class="item">
+						      <img src="../images/02.jpg" alt="...">
+						      <div class="carousel-caption">
+						        <p>说明四</p>
+						      </div>
+						    </div>
+						   
+						  </div>
+						
+						  <!-- Controls -->
+						  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+						    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						    <span class="sr-only">Previous</span>
+						  </a>
+						  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+						    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						    <span class="sr-only">Next</span>
+						  </a>
+						</div>
+		         </div>
+		         <div id="content-right" class="col-md-4 col-xs-12">
+		           <a href="#" target="_blank"><img src="../images/01.jpg"></a>
+		           <a href="#" target="_blank"><img src="../images/02.jpg"></a>
+		           <a href="#" target="_blank">企业团体个性化定制</a>
+		         </div>
+		      </div>
+		  
+		</div><!--/轮播主界面content -->
+		
+		
+		
+		<div id="main">
+		
+		   <div class="row">
+		      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+		        <div class="row" id="productrow">
+		          <!-- 单个基本模块 -->
+		           <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4 ">
+		            <div class="row" >
+		              <!-- 图片展示 -->
+		              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+		                <a href="#" class="heightauto">
+		                  <img  src="../images/01.jpg" title="正宗海南特小凤西瓜，肉质细腻脆甜多汁！">
+		                </a>
+		
+		              </div><!-- 1-->
+		              <!-- 表单 -->
+		              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 fromfood">
+		                
+		                <form role="form">
+		                  <div class="row">
+		                     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+		                    <h5 class="pull-left">美味可口，主厨推荐</h5>
+		                    <div class="pull-right buy-btn">
+		                      <a>
+		                         <span>15</span>
+		                      </a>
+		                    </div>
+		                   </div>
+		                 </div>
+		                 <div class="row clearx"> 
+		                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+		                        <span class="pull-left">赠品：</span>
+		                       <div class="form-group pull-left" >
+		                         <select  class="form-control">
+		                            <option>统一红茶330ml</option>
+		                            <option>统一绿茶330ml</option>
+		                            <option>冰糖雪梨330ml</option>
+		                            
+		                      </select>
+		                     </div>
+		                    </div>
+		                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+		                      <a href="#">美味零食</a>
+		                       
+		                     </div>
+		                    </div>
+		                </form>
+		              </div><!-- 表单 -->
+		              </div> <!-- /row-->
+		            </div><!-- /单个基本模块 -->
+		           <!-- 单个基本模块 -->
+		           <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4 ">
+		            <div class="row" >
+		              <!-- 图片展示 -->
+		              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+		                <a href="#" class="heightauto">
+		                  <img  src="../images/01.jpg" title="正宗海南特小凤西瓜，肉质细腻脆甜多汁！">
+		                </a>
+		
+		              </div><!-- 1-->
+		              <!-- 表单 -->
+		              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 fromfood">
+		                
+		                <form role="form">
+		                  <div class="row">
+		                     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+		                    <h5 class="pull-left">美味可口，主厨推荐</h5>
+		                    <span class="pull-right">￥<span>15</span></span>
+		                   </div>
+		                 </div>
+		                 <div class="row clearx"> 
+		                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+		                        <span class="pull-left">赠品：</span>
+		                       <div class="form-group pull-left" >
+		                         <select  class="form-control">
+		                            <option>统一红茶330ml</option>
+		                            <option>统一绿茶330ml</option>
+		                            <option>冰糖雪梨330ml</option>
+		                            
+		                      </select>
+		                     </div>
+		                    </div>
+		                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+		                      <a href="#">美味零食</a>
+		                       
+		                     </div>
+		                    </div>
+		                </form>
+		              </div><!-- 表单 -->
+		              </div> <!-- /row-->
+		            </div><!-- /单个基本模块 -->
+		            
+		             <!-- 单个基本模块 -->
+		           <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4 ">
+		            <div class="row" >
+		              <!-- 图片展示 -->
+		              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+		                <a href="#" class="heightauto">
+		                  <img  src="../images/01.jpg" title="正宗海南特小凤西瓜，肉质细腻脆甜多汁！">
+		                </a>
+		
+		              </div><!-- 1-->
+		              <!-- 表单 -->
+		              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 fromfood">
+		                
+		                <form role="form">
+		                  <div class="row">
+		                     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+		                    <h5 class="pull-left">美味可口，主厨推荐</h5>
+		                    <span class="pull-right">￥<span>15</span></span>
+		                   </div>
+		                 </div>
+		                 <div class="row clearx"> 
+		                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+		                        <span class="pull-left">赠品：</span>
+		                       <div class="form-group pull-left" >
+		                         <select  class="form-control">
+		                            <option>统一红茶330ml</option>
+		                            <option>统一绿茶330ml</option>
+		                            <option>冰糖雪梨330ml</option>
+		                            
+		                      </select>
+		                     </div>
+		                    </div>
+		                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+		                      <a href="#">美味零食</a>
+		                       
+		                     </div>
+		                    </div>
+		                </form>
+		              </div><!-- 表单 -->
+		              </div> <!-- /row-->
+		            </div><!-- /单个基本模块 -->
+		         
+		          </div>
+		
+		        </div>
+		    
+		      </div> 
+		    
+		  </div><!-- /main -->
+		
+		
+    </div><!--/主9-->
+    <div class="col-md-3 col-lg-3"><!-- 主3 -->
+       <!--悬浮水果面 -->
+		<div id="rightflow">
+		  <div>
+		    <a href="#">
+		       <img  src="../images/15.jpg" title="绿色健康，安全放心！">
+		    </a>
+		  </div>
+		  <div>
+		    xxx
+		  </div>
+		</div>
+		<!--/悬浮水果面 -->
+    </div><!-- /主3 -->
+  </div><!-- /最外层row-->
+</div><!-- /最外层container-->
 <!-- footer-->
 <footer id="footer" >
   <div class="container navbar-default">
@@ -406,42 +527,67 @@
     </div>
   </div>
 </footer>
-
-<!--悬浮水果面 -->
-<div id="rightflow">
-  <div>
-    <a href="#">
-       <img  src="../images/15.jpg" title="绿色健康，安全放心！">
-    </a>
-  </div>
-  <div>
-    xxx
-  </div>
-</div>
-<!--/悬浮水果面 -->
-<!--悬浮休闲食品面 -->
-<div id="leftflow">
-  <div>
-    <a href="#">
-       <img  src="../images/16.jpg" title="休闲食品！">
-    </a>
-  </div>
-  <div>
-    xxx
-  </div>
-</div>
-<!--/悬浮休闲食品面 -->
-<!--悬浮休闲食品面 -->
+<!--悬浮购物车 -->
 <div id="bottomflow">
-  <div>
-    
+  <div  class="colormain">
+     <div id="mycattitle">
+        <p>我的购物车</p>
+     </div>
   </div>
-  <div>
-    xxx
+  
+  <div id="mycattital">
+      
+      <ul>
+      <!--每个套餐显示模板 -->
+        <li class="clearfix">
+           <div class="pull-left bombo-name">唐僧肉</div>
+           <div class="pull-left">
+              <a class="mycat-sum cut-btn">-</a>
+              <input class="mycat-input-sum sum-num" type="text" value="0">
+              <a class="mycat-sum add-btn">+</a>
+           </div>
+           <div class="pull-left sun-rmb-style sun-rmb">1500</div>
+           <a class="pull-right delete-btn">×</a>
+           
+        </li>
+        <!--每个套餐显示模板 -->
+        <li class="clearfix" >
+           <div class="pull-left bombo-name">唐僧肉</div>
+           <div class="pull-left add-delete">
+              <a class="mycat-sum cut-btn">-</a>
+              <input class="mycat-input-sum sum-num" type="text" value="0">
+              <a class="mycat-sum add-btn">+</a>
+           </div>
+           <div class="pull-left sun-rmb-style sun-rmb">15</div>
+           <a class="pull-right delete-btn">×</a>
+           
+        </li>
+        <!--每个套餐显示模板 -->
+        <li class="clearfix">
+           <div class="pull-left bombo-name">唐僧肉</div>
+           <div class="pull-left">
+              <a class="mycat-sum cut-btn">-</a>
+              <input class="mycat-input-sum sum-num" type="text" value="0">
+              <a class="mycat-sum add-btn">+</a>
+           </div>
+           <div class="pull-left sun-rmb-style sun-rmb">155</div>
+           <a class="pull-right delete-btn">×</a>
+           
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+  </div>
+  <div id="mycatsum">
+            总<span>1</span>件商品<br>
+           金额总计：<span>128.00</span>
+  </div>
+  <div id="cat-btn" class="payx">
+     <a id="cat-pay">
+        <button type="submit" id="register"   class="btn btn-warning btn-block">去购物车结算></button>
+     </a>
   </div>
 </div>
-<!--/悬浮休闲食品面 -->
-
+<!--/悬浮悬浮购物车 -->
 <!-- 引入必要的jquery和bootstrap包-->
 <!-- <script src='http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js'></script>
 <script src='http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js'></script> -->
