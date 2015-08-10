@@ -2,21 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.family.kitchen.user.mapper.UserMapper">
 	
-	<select id="selectUserById" parameterType="String" resultType="User">
+	<select id="selectUserById" parameterType="String" resultType="com.family.kitchen.user.po.User">
 		select * from users
 		<where>
 			users.userid = #{id}
 		</where>
 	</select>
 	
-	<select id="selectUserByUsername" parameterType="String" resultType="User">
+	<select id="selectUserByUsername" parameterType="String" resultType="com.family.kitchen.user.po.User">
 		select * from users
 		<where>
 			users.username = #{username}
 		</where>
 	</select>
 	
-	<select id="selectUserByEmail" parameterType="String" resultType="User">
+	<select id="selectUserByEmail" parameterType="String" resultType="com.family.kitchen.user.po.User">
 		select * from users
 		<where>
 			users.email = #{email}
@@ -30,12 +30,12 @@
 		</foreach>
 	</insert>
 	
-	<insert id="insertSingleUser" parameterType="User">
+	<insert id="insertSingleUser" parameterType="com.family.kitchen.user.po.User">
 		insert into users
 		values (#{userid}, #{username}, #{password}, #{email}, #{phonenumber}, #{code}, #{state}, #{show})
 	</insert>
 	
-	<select id="selectSingleUser" parameterType="UserVo" resultType="UserAo">	
+	<select id="selectSingleUser" parameterType="com.family.kitchen.user.web.vo.UserVo" resultType="com.family.kitchen.user.ao.UserAo">	
 		select * from users
 		<where>
 			<if test="userid != null and userid != ''">

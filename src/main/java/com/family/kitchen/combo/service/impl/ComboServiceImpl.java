@@ -35,7 +35,7 @@ public class ComboServiceImpl implements ComboService {
 		ComboVo comboVo = new ComboVo();
 		comboVo.setOrdercolumn(ordercolumn);
 		comboVo.setOrdermethod(ordermethod);
-		if (pagenumber != null) {
+		if (pagenumber != null && pagenumber > 0) {
 			comboVo.setMinnum((pagenumber-1)*pagesize);
 		}else {
 			comboVo.setMinnum(0);

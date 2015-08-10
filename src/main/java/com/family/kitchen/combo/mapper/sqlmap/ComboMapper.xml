@@ -3,7 +3,7 @@
 
 <mapper namespace="com.family.kitchen.combo.mapper.ComboMapper">
 	
-	<select id="selectAll" parameterType="ComboVo" resultType="ComboAo">
+	<select id="selectAll" parameterType="com.family.kitchen.combo.web.vo.ComboVo" resultType="com.family.kitchen.combo.ao.ComboAo">
 		select * from combo
 		order by
 		<choose>
@@ -11,7 +11,7 @@
 				${ordercolumn}
 			</when>
 			<otherwise>
-				comboid
+				comboprice
 			</otherwise>
 		</choose>
 		<choose>

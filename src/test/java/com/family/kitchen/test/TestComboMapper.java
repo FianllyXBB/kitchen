@@ -31,9 +31,9 @@ public class TestComboMapper {
 			Combo combo = new Combo();
 			combo.setComboid(UUIDUtil.randomUUID());
 			combo.setComboname(""+i);
-			combo.setComboimage("images/01.jpg");
+			combo.setComboimage("/kitchen/images/" + (i%7 + 10) + ".jpg");
 			combo.setCombodescription("非常好吃奥");
-			combo.setComboprice(i+0d);
+			combo.setComboprice(i+0.5d);
 			combo.setCombonum(10);
 			combo.setComborenum(5);
 			list.add(combo);
