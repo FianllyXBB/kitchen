@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,6 +21,18 @@ import com.family.kitchen.user.web.vo.UserVo;
 import com.family.kitchen.util.ImageCode;
 import com.family.kitchen.util.UUIDUtil;
 
+/**
+ * 
+ * <p>Title: UserAction类</p>
+ * <p>Copyright: </p> 
+ * @author XBB 
+ * @date 2015年8月7日 下午5:20:13 Create
+ * @version V1.0 
+ * <pre>Histroy:
+ *       2015年8月7日 下午5:20:13  XBB  Create
+ * </pre>
+ *
+ */
 @Controller
 @RequestMapping("/user")
 public class UserAction {
@@ -39,7 +50,6 @@ public class UserAction {
 	
 	@RequestMapping("/regist")
 	public ModelAndView registForm(HttpServletResponse response) throws IOException {
-		//response.sendRedirect("/WEB-INF/views/test/user/regitst.jsp");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/fore/user/regist");
 		return modelAndView;
@@ -112,41 +122,36 @@ public class UserAction {
 	}
 	
 	@RequestMapping("/signinSubmit")
-	public ModelAndView signinSubmit(HttpServletRequest request , String username, String password, String imageCode) throws IOException {
-		ModelAndView modelAndView = new ModelAndView();
+	public String signinSubmit(HttpServletRequest request , HttpServletResponse response, String username, String password, String imageCode) throws IOException, Exception {
 		Map<String, String> errors = new HashMap<String, String>();
 		if (imageCode != null) {
 			if (imageCode.trim()=="" || !imageCode.equalsIgnoreCase((String) request.getSession().getAttribute("session_imageCode"))) {
 				errors.put("imageCodeError", "验证码错误");
-				modelAndView.addObject("username", username);
-				modelAndView.addObject("password", password);
-				modelAndView.addObject("errors", errors);
-				modelAndView.addObject("loginAgain", true);
-				modelAndView.setViewName("/fore/user/signin");
-				return modelAndView;
+				request.setAttribute("username", username);
+				request.setAttribute("password", password);
+				request.setAttribute("errors", errors);
+				request.setAttribute("loginAgain", true);
+				return "/fore/user/signin";
 			}
 		}
 		
 		UserAo userAo = userService.signin(username, null);
 		
 		if (userAo != null && userAo.getPassword().equals(password)) {
-			modelAndView.addObject("userAo", userAo);
-			modelAndView.setViewName("/fore/combo/showpage");
-			return modelAndView;
+			request.getSession(true).setAttribute("userAo", userAo);
+			return "redirect:/test/showpage.ms";
 		}
 		userAo = userService.signin(null, username);
 		if (userAo != null && userAo.getPassword().equals(password)) {
-			modelAndView.addObject("userAo", userAo);
-			modelAndView.setViewName("/fore/combo/showpage");
-			return modelAndView;
+			request.getSession(true).setAttribute("userAo", userAo);
+			return "redirect:/test/showpage.ms";
 		}
 		errors.put("error", "用户名/手机号码 或 密码错误");
-		modelAndView.addObject("errors", errors);
-		modelAndView.addObject("username", username);
-		modelAndView.addObject("password", password);
-		modelAndView.addObject("loginAgain", true);
-		modelAndView.setViewName("/fore/user/signin");
-		return modelAndView;
+		request.setAttribute("errors", errors);
+		request.setAttribute("username", username);
+		request.setAttribute("password", password);
+		request.setAttribute("loginAgain", true);
+		return "/fore/user/signin";
 	}
 	
 }
