@@ -12,12 +12,18 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd " default-autowire="byName">
-		
+
+		<mvc:annotation-driven>
+        	<mvc:message-converters register-defaults="true">
+            	<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                	<constructor-arg value="UTF-8" />
+            	</bean>
+        	</mvc:message-converters>
+    	</mvc:annotation-driven>
+    	
 		<context:component-scan base-package="com.family.kitchen">
 			<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 		</context:component-scan>
-		
-		<mvc:annotation-driven />
 		
 		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">	
 			<property name="prefix" value="/WEB-INF/views" />
