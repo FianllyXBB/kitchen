@@ -47,14 +47,19 @@ $(document).ready(function(){
 			    $("#passwordError").html(data.passwordError);
 			    $("#loginError").html(data.loginError);
 			    if(data.loginSuccess == "true"){
-			    	window.location.replace("http://localhost:8080/kitchen/backlogin/main.ms");
+			    	window.location.replace("/kitchen/backlogin/main.ms");
 			    }
 		    }
 		});
 	});
 	
-	$("inputUsername").bind("blur", function(){
-		
+	$("#inputUsername").bind("blur", function(){
+		$("#usernameError").text("");
+		$("#loginError").text("");
+	});
+	$("#inputPassword").bind("blur", function(){
+		$("#passwordError").text("");
+		$("#loginError").text("");
 	});
 });
 </SCRIPT>
@@ -75,7 +80,7 @@ $(document).ready(function(){
 			<BR /><BR />
 			<div class="input-group">
 				<span class="input-group-addon" id="basic-password">密&nbsp;&nbsp;&nbsp;码：</span>
-				<INPUT type="password" class="form-control" placeholder="Password" name="password" aria-describedby="basic-password"/>
+				<INPUT id="inputPassword" type="password" class="form-control" placeholder="Password" name="password" aria-describedby="basic-password"/>
 			</div><span id="passwordError" class="error">${errors.passwordError }</span>
 			<BR /><BR />
 		    <button id="loginbtn" type="button" class="btn btn-default">登录</button>

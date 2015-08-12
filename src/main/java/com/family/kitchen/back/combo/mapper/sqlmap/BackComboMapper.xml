@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.family.kitchen.back.combo.mapper.BackComboMapper">
+
+	<select id="selectAll" parameterType="com.family.kitchen.combo.web.vo.ComboVo" resultType="com.family.kitchen.combo.ao.ComboAo">
+		select * from combo
+		order by
+		<choose>
+			<when test="ordercolumn != null and ordercolumn != ''">
+				${ordercolumn}
+			</when>
+			<otherwise>
+				comboprice
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="ordermethod != null and ordermethod != ''">
+				${ordermethod}
+			</when>
+			<otherwise>
+				asc
+			</otherwise>
+		</choose>
+		limit #{minnum},#{pagesize}
+	</select>
+
+	<select id="selectCount" resultType="Integer">
+		select count(1) from combo
+	</select>
+</mapper>
