@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.family.kitchen.back.category.mapper.BackCategoryMapper">
+
+	<insert id="insertSingleCategory" parameterType="com.family.kitchen.back.category.po.Category">
+		insert into category
+		values(#{categoryid}, #{categoryname}, #{show})
+	</insert>
+
+</mapper>

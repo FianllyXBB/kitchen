@@ -26,13 +26,13 @@
 	<insert id="insertUserList" parameterType="ArrayList">
 		insert into users values
 		<foreach collection="list" item="item" index="index" separator=",">
-			(#{item.userid}, #{item.username}, #{item.password}, #{item.email}, #{item.phonenumber}, #{item.code}, #{item.state}, #{item.show})
+			(#{item.userid}, #{item.username}, #{item.password}, #{item.email}, #{item.phonenumber}, #{item.code}, #{item.state}, #{item.show}, #{vip})
 		</foreach>
 	</insert>
 	
 	<insert id="insertSingleUser" parameterType="com.family.kitchen.user.po.User">
 		insert into users
-		values (#{userid}, #{username}, #{password}, #{email}, #{phonenumber}, #{code}, #{state}, #{show})
+		values (#{userid}, #{username}, #{password}, #{email}, #{phonenumber}, #{code}, #{state}, #{show}, #{vip})
 	</insert>
 	
 	<select id="selectSingleUser" parameterType="com.family.kitchen.user.web.vo.UserVo" resultType="com.family.kitchen.user.ao.UserAo">	

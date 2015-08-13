@@ -20,9 +20,9 @@ public class UserVo {
 	private String email;//邮箱
 	private String phonenumber;//手机号码
 	private String code;//激活码
-	private boolean state;//是否激活
-	private boolean show;//保留字段
-	
+	private Boolean state;//是否激活
+	private Boolean show;//保留字段
+	private Integer vip;//vip积分
 	public UserVo(){
 		
 	}
@@ -80,19 +80,27 @@ public class UserVo {
 		this.code = code;
 	}
 	
-	public boolean getState() {
+	public Boolean getState() {
 		return state;
 	}
-	
-	public void setState(boolean state) {
+
+	public void setState(Boolean state) {
 		this.state = state;
 	}
-	
-	public boolean getShow() {
+
+	public Boolean getShow() {
 		return show;
 	}
-	
-	public void setShow(boolean show) {
+
+	public void setShow(Boolean show) {
 		this.show = show;
+	}
+
+	public Integer getVip() {
+		return vip;
+	}
+
+	public void setVip(Integer vip) {
+		this.vip = vip;
 	}
 }

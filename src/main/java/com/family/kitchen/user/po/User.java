@@ -24,6 +24,7 @@ public class User extends BaseEntity {
 	private String code;//激活码
 	private Boolean state;//是否激活
 	private Boolean show;//保留字段
+	private Integer vip;//vip积分
 	public String getUserid() {
 		return userid;
 	}
@@ -71,6 +72,12 @@ public class User extends BaseEntity {
 	}
 	public void setShow(Boolean show) {
 		this.show = show;
+	}
+	public Integer getVip() {
+		return vip;
+	}
+	public void setVip(Integer vip) {
+		this.vip = vip;
 	}
 	
 	

@@ -22,6 +22,7 @@ public class ComboVo extends BaseEntity {
 	private String ordercolumn; //排序列
 	private String ordermethod;//排序方式	
     private Integer minnum;//分页第一个数据
+    private String categoryid;//分页类别
      
 	public ComboAo getComboAo() {
 		return comboAo;
@@ -52,6 +53,12 @@ public class ComboVo extends BaseEntity {
 	}
 	public void setMinnum(Integer minnum) {
 		this.minnum = minnum;
+	}
+	public String getCategoryid() {
+		return categoryid;
+	}
+	public void setCategoryid(String categoryid) {
+		this.categoryid = categoryid;
 	}
 		
 

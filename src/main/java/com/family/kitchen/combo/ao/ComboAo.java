@@ -23,6 +23,14 @@ public class ComboAo extends BaseEntity{
 	private Integer combonum;  // 总份数
 	private Integer comborenum;//剩余份数
 	private Boolean show;
+	private String categoryid;
+	
+	public String getCategoryid() {
+		return categoryid;
+	}
+	public void setCategoryid(String categoryid) {
+		this.categoryid = categoryid;
+	}
 	public String getComboid() {
 		return comboid;
 	}

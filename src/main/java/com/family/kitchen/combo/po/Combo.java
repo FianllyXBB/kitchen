@@ -24,6 +24,8 @@ public class Combo extends BaseEntity {
 	private Integer combonum;  // 总份数
 	private Integer comborenum;//剩余份数
 	private Boolean show;
+	private String categoryid;
+	
 	public String getComboid() {
 		return comboid;
 	}
@@ -72,7 +74,11 @@ public class Combo extends BaseEntity {
 	public void setShow(Boolean show) {
 		this.show = show;
 	}
-	
-	
+	public String getCategoryid() {
+		return categoryid;
+	}
+	public void setCategoryid(String categoryid) {
+		this.categoryid = categoryid;
+	}
 	
 }
