@@ -26,9 +26,9 @@
 	</select>
 	
 	<insert id="insertComboList" parameterType="ArrayList">
-		insert into combo(comboid,comboname,comboimage,combodescription,comboprice,combonum,comborenum) values
+		insert into combo(comboid,comboname,comboimage,combodescription,comboprice,combonum,comborenum,categoryid) values
 		<foreach collection="list" item="item" index="index" separator=",">
-			(#{item.comboid}, #{item.comboname}, #{item.comboimage}, #{item.combodescription}, #{item.comboprice}, #{item.combonum}, #{item.comborenum})
+			(#{item.comboid}, #{item.comboname}, #{item.comboimage}, #{item.combodescription}, #{item.comboprice}, #{item.combonum}, #{item.comborenum}, #{item.categoryid})
 		</foreach>
 	</insert>
 	

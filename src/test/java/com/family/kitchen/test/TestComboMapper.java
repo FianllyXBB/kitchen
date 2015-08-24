@@ -36,6 +36,7 @@ public class TestComboMapper {
 			combo.setComboprice(i+0.5d);
 			combo.setCombonum(10);
 			combo.setComborenum(5);
+			combo.setCategoryid("9042f1bd3acd4edd86e538f0e29f7e6d");
 			list.add(combo);
 		}	
 		comboService.insertComboList(list);
