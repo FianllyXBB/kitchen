@@ -129,7 +129,7 @@ function closeBg() {
 <body>
 	<div id="main">
 		<div id="combolist">
-			<c:forEach items="${list }" var="item">
+			<c:forEach items="${pageData.pageData }" var="item">
 				<div class="comboxx">
 					<img src="${item.comboimage }"/>
 					<div class="xxxx">
@@ -146,13 +146,24 @@ function closeBg() {
 		<div id="pagenum">
 			<nav>
 	  			<ul class="pagination">
-				    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+	  				<c:if test="${pageData.totalPageNum == 1 }">
+	  					<li class="active"><a href="">1 <span class="sr-only">(current)</span></a></li>
+	  				</c:if>
+	  				<c:if test="${pagaData.totalPageNum > 1 and pageData.totalPageNum <= 14 }">
+	  					<li class="disabled"><a href="#" data-aria-label="Previous"><span data-aria-hidden="true">&laquo;</span></a></li>
+	  					<li class="active"><a href="/kitchen/backmain/comboQuery.ms?pagesize=8&pagenumber=1">1 <span class="sr-only">(current)</span></a></li>
+	  					<c:forEach begin="2" end="${pageData.totalPageNum }">
+	  						<li><a href="#">${varStatus.index } <span class="sr-only">(current)</span></a></li>
+	  					</c:forEach>
+	  					
+	  				</c:if>
+				    <li class="disabled"><a href="#" data-aria-label="Previous"><span data-aria-hidden="true">&laquo;</span></a></li>
 				    <li class="active"><a href="/kitchen/backmain/comboQuery.ms?pagesize=8&pagenumber=1">1 <span class="sr-only">(current)</span></a></li>
-				    <li><a href="/kitchen/backmain/comboQuery.ms?pagesize=8&pagenumber=2">1 <span class="sr-only">(current)</span></a></li>
+				    <li><a href="/kitchen/backmain/comboQuery.ms?pagesize=8&pagenumber=2">2<span class="sr-only">(current)</span></a></li>
 				    <li><a href="#">1 <span class="sr-only">(current)</span></a></li>
 				    <li><a href="#">1 <span class="sr-only">(current)</span></a></li>
 				    <li><a href="#">1 <span class="sr-only">(current)</span></a></li>
-				    <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+				    <li><a href="#" data-aria-label="Next"><span data-aria-hidden="true">&raquo;</span></a></li>
 	  			</ul>
 			</nav>	
 		</div>

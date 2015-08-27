@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.family.kitchen.back.category.mapper.BackCategoryMapper">
+
+	<insert id="insertSingleCategory" parameterType="com.family.kitchen.back.category.po.Category">
+		insert into category
+		values(#{categoryid}, #{categoryname}, #{show})
+	</insert>
+	
+	<select id="selectAll" parameterType="com.family.kitchen.back.category.web.vo.CategoryVo" resultType="com.family.kitchen.back.category.ao.CategoryAo">
+		select * from category
+	</select>
+	
+	<select id="selectCategoryByName" resultType="com.family.kitchen.back.category.ao.CategoryAo" parameterType="com.family.kitchen.back.category.web.vo.CategoryVo">
+		select * from category where categoryname = #{category.categoryname}
+	</select>
+	
+	<update id="updateCategory" parameterType="com.family.kitchen.back.category.web.vo.CategoryVo">
+		update category set categoryname = #{category.categoryname} where categoryid = #{category.categoryid}
+	</update>
+	
+</mapper>

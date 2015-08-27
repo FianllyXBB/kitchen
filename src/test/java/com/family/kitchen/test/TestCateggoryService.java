@@ -7,8 +7,9 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.family.kitchen.back.category.ao.CategoryAo;
 import com.family.kitchen.back.category.po.Category;
-import com.family.kitchen.back.category.service.CategoryService;
+import com.family.kitchen.back.category.service.BackCategoryService;
 import com.family.kitchen.util.UUIDUtil;
 
 /**
@@ -33,20 +34,32 @@ public class TestCateggoryService {
 	
 	@Test
 	public void testAddCategory() throws IOException {
-		CategoryService categoryService = (CategoryService) applicationContext.getBean("categoryService");
+		BackCategoryService backCategoryService = (BackCategoryService) applicationContext.getBean("backCategoryService");
 		Category category = new Category();
 		category.setCategoryid(UUIDUtil.randomUUID());
 		category.setCategoryname("套餐");
-		categoryService.addCategory(category);
+		backCategoryService.addCategory(category);
 		category.setCategoryid(UUIDUtil.randomUUID());
 		category.setCategoryname("饮料");
-		categoryService.addCategory(category);
+		backCategoryService.addCategory(category);
 		category.setCategoryid(UUIDUtil.randomUUID());
 		category.setCategoryname("食材");
-		categoryService.addCategory(category);
+		backCategoryService.addCategory(category);
 		category.setCategoryid(UUIDUtil.randomUUID());
 		category.setCategoryname("水果");
-		categoryService.addCategory(category);
+		backCategoryService.addCategory(category);
 	}
 	
+	@Test
+	public void testUpdateCategory() throws IOException {
+		BackCategoryService backCategoryService = (BackCategoryService) applicationContext.getBean("backCategoryService");	
+		backCategoryService.updateCategory("616e917d09034868b02d8f38282df45a","啊发货手机壳");
+	}
+	
+	@Test
+	public void testSelectSingleCategory() throws IOException {
+		BackCategoryService backCategoryService = (BackCategoryService) applicationContext.getBean("backCategoryService");	
+		CategoryAo categoryAo = backCategoryService.selectSingleCategory("啊发货手机壳");
+		System.out.println(categoryAo);
+	}
 }

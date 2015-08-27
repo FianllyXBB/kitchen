@@ -180,7 +180,7 @@ $(function() {
 		<li>
 			<div class="link">class manager</div>
 			<ul class="submenu">
-				<li><a href="/kitchen/backlogin/login.ms" target="right">class query</a></li>
+				<li><a href="/kitchen/backmain/categoryQuery.ms" target="right">class query</a></li>
 				<li><a href="/kitchen/backlogin/login.ms">class add</a></li>
 				<li><a href="#">CSS</a></li>
 				<li><a href="#">Maquetacion web</a></li>

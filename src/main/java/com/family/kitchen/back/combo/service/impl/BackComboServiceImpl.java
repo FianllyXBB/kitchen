@@ -10,6 +10,7 @@ import com.family.kitchen.back.combo.mapper.BackComboMapper;
 import com.family.kitchen.back.combo.service.BackComboService;
 import com.family.kitchen.combo.ao.ComboAo;
 import com.family.kitchen.combo.web.vo.ComboVo;
+import com.family.kitchen.util.PageSet;
 
 /**
  * 
@@ -28,24 +29,37 @@ public class BackComboServiceImpl implements BackComboService {
 	@Autowired
 	private BackComboMapper backComboMapper;
 	
-	public List<ComboAo> selectAll(Integer pagenumber, Integer pagesize,
-			String ordercolumn, String ordermethod) throws IOException {
+	public PageSet<ComboAo> selectAll(Integer pagenumber, Integer pagesize,
+			String ordercolumn, String ordermethod, String categoryid) throws IOException {
+		PageSet<ComboAo> pageData = new PageSet<ComboAo>();
 		ComboVo comboVo = new ComboVo();
 		comboVo.setOrdercolumn(ordercolumn);
+		pageData.setOrdercolumn(ordercolumn);
 		comboVo.setOrdermethod(ordermethod);
+		pageData.setOrdermethod(ordermethod);
 		if (pagenumber != null && pagenumber > 0) {
+			pageData.setStartRow((pagenumber-1)*pagesize);
 			comboVo.setMinnum((pagenumber-1)*pagesize);
 		}else {
 			comboVo.setMinnum(0);
+			pageData.setStartRow(0);
 		}
 		if (pagesize != null) {
 			comboVo.setPagesize(pagesize);
+			pageData.setPagesize(pagesize);
 		}else {
-			comboVo.setPagesize(backComboMapper.selectCount());
+			comboVo.setPagesize(10);
+			pageData.setPagesize(10);
 		}
-		
+		if (categoryid != null && categoryid.length() > 0) {
+			comboVo.setCategoryid(categoryid);
+			pageData.setCategoryid(categoryid);
+		}
+		Integer count = backComboMapper.selectCount(comboVo);
+		pageData.setTotalPageNum(count%pageData.getPagesize()==0? count/pageData.getPagesize() : count/pageData.getPagesize() + 1);
 		List<ComboAo> list = backComboMapper.selectAll(comboVo);
-		return list;
+		pageData.setPageData(list);
+		return pageData;
 	}
 
 }

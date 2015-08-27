@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.family.kitchen.combo.ao.ComboAo;
 import com.family.kitchen.combo.web.vo.ComboVo;
-
 /**
  * 
  *<p>Title:BackComboMapper.java</p>
@@ -21,5 +20,6 @@ public interface BackComboMapper {
 
 	public List<ComboAo> selectAll(ComboVo comboVo) throws IOException;
 	
-	public Integer selectCount() throws IOException;
+	public Integer selectCount(ComboVo comboVo) throws IOException;
+
 }

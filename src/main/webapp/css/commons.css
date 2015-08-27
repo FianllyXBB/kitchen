@@ -1,0 +1,26 @@
+body{
+	text-align: center;
+}
+table, th , td {
+  border: 1px solid #ffffff;
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: center;
+}
+table tr:nth-child(odd) {
+  background-color: #F0F9FF;
+}
+table tr:nth-child(even) {
+  background-color: #DCEEF8;
+}
+th{
+	background-color: #168CFA;
+	color: #ffffff;
+}
+caption{
+	color: #168CFA;
+	font-weight: bolder;
+}
+#dialog{
+	width: 500px;
+}

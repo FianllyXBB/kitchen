@@ -5,6 +5,11 @@
 
 	<select id="selectAll" parameterType="com.family.kitchen.combo.web.vo.ComboVo" resultType="com.family.kitchen.combo.ao.ComboAo">
 		select * from combo
+		<where>
+			<if test="categoryid != null and categoryid != ''">
+				categoryid = #{categoryid}
+			</if>
+		</where>
 		order by
 		<choose>
 			<when test="ordercolumn != null and ordercolumn != ''">
@@ -25,7 +30,12 @@
 		limit #{minnum},#{pagesize}
 	</select>
 
-	<select id="selectCount" resultType="Integer">
-		select count(1) from combo
+	<select id="selectCount" parameterType="com.family.kitchen.combo.web.vo.ComboVo" resultType="Integer">
+		select count(*) from combo
+		<where>
+			<if test="categoryid != null and categoryid != ''">
+				categoryid = #{categoryid}
+			</if>
+		</where>
 	</select>
 </mapper>

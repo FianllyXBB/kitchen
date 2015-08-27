@@ -1,7 +1,6 @@
 package com.family.kitchen.back.login.web.action;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.family.kitchen.back.combo.service.BackComboService;
 import com.family.kitchen.combo.ao.ComboAo;
+import com.family.kitchen.util.PageSet;
 
 /**
  * 
@@ -46,11 +46,18 @@ public class MainAction {
 	
 	@RequestMapping("/comboQuery")
 	public ModelAndView comboQuery(@RequestParam(defaultValue="1") Integer pagenumber, @RequestParam(defaultValue="10") Integer pagesize,
-			String ordercolumn, @RequestParam(defaultValue="asc") String ordermethod) throws IOException {
+			String ordercolumn, @RequestParam(defaultValue="asc") String ordermethod, String categoryid) throws IOException {
 		ModelAndView modelAndView = new ModelAndView();
-		List<ComboAo> list = backComboService.selectAll(pagenumber, pagesize, ordercolumn, ordermethod);
-		modelAndView.addObject("list", list);
+		PageSet<ComboAo> pageData = backComboService.selectAll(pagenumber, pagesize, ordercolumn, ordermethod, categoryid);
+		modelAndView.addObject("pageData", pageData);
 		modelAndView.setViewName("/back/comboQuery");
+		return modelAndView;
+	}
+	
+	@RequestMapping("/categoryQuery")
+	public ModelAndView categoryQuery() throws IOException{
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/back/categoryQuery");
 		return modelAndView;
 	}
 }

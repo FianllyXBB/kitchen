@@ -75,12 +75,12 @@ $(document).ready(function(){
     	<FORM id="loginform" action="/kitchen/backlogin/loginSubmit.ms" method="post">
     		<div class="input-group">
     			<span class="input-group-addon" id="basic-username">用户名：</span>
-				<input id="inputUsername" type="text" class="form-control" placeholder="Username" aria-describedby="basic-username" name="username" >				
+				<input id="inputUsername" type="text" class="form-control" placeholder="Username" data-aria-describedby="basic-username" name="username" >				
 			</div><span id="usernameError" class="error">${errors.usernameError }</span>
 			<BR /><BR />
 			<div class="input-group">
 				<span class="input-group-addon" id="basic-password">密&nbsp;&nbsp;&nbsp;码：</span>
-				<INPUT id="inputPassword" type="password" class="form-control" placeholder="Password" name="password" aria-describedby="basic-password"/>
+				<INPUT id="inputPassword" type="password" class="form-control" placeholder="Password" name="password" data-aria-describedby="basic-password"/>
 			</div><span id="passwordError" class="error">${errors.passwordError }</span>
 			<BR /><BR />
 		    <button id="loginbtn" type="button" class="btn btn-default">登录</button>
