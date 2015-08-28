@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.family.kitchen.back.category.service.BackCategoryService;
 import com.family.kitchen.back.combo.service.BackComboService;
 import com.family.kitchen.combo.ao.ComboAo;
 import com.family.kitchen.util.PageSet;
@@ -29,6 +30,8 @@ public class MainAction {
 
 	@Autowired
 	private BackComboService backComboService;
+	@Autowired
+	private BackCategoryService backCategoryService;
 	
 	@RequestMapping("/main")
 	public ModelAndView mainpage() throws IOException {
@@ -54,10 +57,13 @@ public class MainAction {
 		return modelAndView;
 	}
 	
-	@RequestMapping("/categoryQuery")
-	public ModelAndView categoryQuery() throws IOException{
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/back/categoryQuery");
-		return modelAndView;
-	}
+//	@RequestMapping("/categoryQuery")
+//	public ModelAndView categoryQuery() throws IOException{
+//		CategoryVo categoryVo = new CategoryVo();
+//		PageSet<CategoryAo> pageData = backCategoryService.categoryQuery(categoryVo);
+//		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("pageData", pageData);
+//		modelAndView.setViewName("/back/categoryQuery2");
+//		return modelAndView;
+//	}
 }

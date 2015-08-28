@@ -64,4 +64,10 @@ public class BackCategoryServiceImpl implements BackCategoryService {
 		backCategoryMapper.updateCategory(categoryVo);
 	}
 
+	@Override
+	public CategoryAo selectSingleCategoryByPri(String categoryid)
+			throws IOException {
+		return backCategoryMapper.selectSingleCategoryByPri(categoryid);
+	}
+
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.family.kitchen.back.user.mapper.BackUserMapper">
+
+	<select id="selectAll" parameterType="com.family.kitchen.back.user.web.vo.BackUserVo" resultType="com.family.kitchen.back.user.ao.BackUserAo">
+		select * from users
+		order by
+		<choose>
+			<when test="ordercolumn != null and ordercolumn != ''">
+				${ordercolumn}
+			</when>
+			<otherwise>
+				username
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="ordermethod != null and ordermethod != ''">
+				${ordermethod}
+			</when>
+			<otherwise>
+				asc
+			</otherwise>
+		</choose>
+		limit #{startRow},#{pagesize}
+	</select>
+	
+	<select id="selectCount" parameterType="com.family.kitchen.back.user.web.vo.BackUserVo" resultType="Integer">
+		select count(*) from users
+		<where>
+			<if test="username != null and username != ''">
+				username like '%${username}%'
+			</if>
+		</where>
+	</select>
+	
+</mapper>

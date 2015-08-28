@@ -20,4 +20,8 @@
 		update category set categoryname = #{category.categoryname} where categoryid = #{category.categoryid}
 	</update>
 	
+	<select id="selectSingleCategoryByPri" parameterType="String" resultType="com.family.kitchen.back.category.ao.CategoryAo">
+		select * from category where categoryid = #{categoryid}
+	</select>
+	
 </mapper>
