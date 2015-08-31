@@ -36,18 +36,23 @@ public class TestCateggoryService {
 	public void testAddCategory() throws IOException {
 		BackCategoryService backCategoryService = (BackCategoryService) applicationContext.getBean("backCategoryService");
 		Category category = new Category();
-		category.setCategoryid(UUIDUtil.randomUUID());
-		category.setCategoryname("套餐");
-		backCategoryService.addCategory(category);
-		category.setCategoryid(UUIDUtil.randomUUID());
-		category.setCategoryname("饮料");
-		backCategoryService.addCategory(category);
-		category.setCategoryid(UUIDUtil.randomUUID());
-		category.setCategoryname("食材");
-		backCategoryService.addCategory(category);
-		category.setCategoryid(UUIDUtil.randomUUID());
-		category.setCategoryname("水果");
-		backCategoryService.addCategory(category);
+//		category.setCategoryid(UUIDUtil.randomUUID());
+//		category.setCategoryname("套餐");
+//		backCategoryService.addCategory(category);
+//		category.setCategoryid(UUIDUtil.randomUUID());
+//		category.setCategoryname("饮料");
+//		backCategoryService.addCategory(category);
+//		category.setCategoryid(UUIDUtil.randomUUID());
+//		category.setCategoryname("食材");
+//		backCategoryService.addCategory(category);
+//		category.setCategoryid(UUIDUtil.randomUUID());
+//		category.setCategoryname("水果");
+//		backCategoryService.addCategory(category);
+		for (int i = 0; i < 1000; i++) {
+			category.setCategoryid(UUIDUtil.randomUUID());
+			category.setCategoryname("水果" + i);
+			backCategoryService.addCategory(category);
+		}
 	}
 	
 	@Test

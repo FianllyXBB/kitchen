@@ -1,17 +1,9 @@
 package com.family.kitchen.back.login.web.action;
 
 import java.io.IOException;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.family.kitchen.back.category.service.BackCategoryService;
-import com.family.kitchen.back.combo.service.BackComboService;
-import com.family.kitchen.combo.ao.ComboAo;
-import com.family.kitchen.util.PageSet;
 
 /**
  * 
@@ -27,11 +19,6 @@ import com.family.kitchen.util.PageSet;
 @Controller
 @RequestMapping("/backmain")
 public class MainAction {
-
-	@Autowired
-	private BackComboService backComboService;
-	@Autowired
-	private BackCategoryService backCategoryService;
 	
 	@RequestMapping("/main")
 	public ModelAndView mainpage() throws IOException {
@@ -47,23 +34,6 @@ public class MainAction {
 		return modelAndView;
 	}
 	
-	@RequestMapping("/comboQuery")
-	public ModelAndView comboQuery(@RequestParam(defaultValue="1") Integer pagenumber, @RequestParam(defaultValue="10") Integer pagesize,
-			String ordercolumn, @RequestParam(defaultValue="asc") String ordermethod, String categoryid) throws IOException {
-		ModelAndView modelAndView = new ModelAndView();
-		PageSet<ComboAo> pageData = backComboService.selectAll(pagenumber, pagesize, ordercolumn, ordermethod, categoryid);
-		modelAndView.addObject("pageData", pageData);
-		modelAndView.setViewName("/back/comboQuery");
-		return modelAndView;
-	}
 	
-//	@RequestMapping("/categoryQuery")
-//	public ModelAndView categoryQuery() throws IOException{
-//		CategoryVo categoryVo = new CategoryVo();
-//		PageSet<CategoryAo> pageData = backCategoryService.categoryQuery(categoryVo);
-//		ModelAndView modelAndView = new ModelAndView();
-//		modelAndView.addObject("pageData", pageData);
-//		modelAndView.setViewName("/back/categoryQuery2");
-//		return modelAndView;
-//	}
+	
 }

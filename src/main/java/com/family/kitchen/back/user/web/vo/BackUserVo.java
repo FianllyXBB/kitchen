@@ -1,6 +1,7 @@
 package com.family.kitchen.back.user.web.vo;
 
 import com.family.kitchen.back.user.ao.BackUserAo;
+import com.family.kitchen.base.BaseEntity;
 
 /**
  * 
@@ -13,7 +14,7 @@ import com.family.kitchen.back.user.ao.BackUserAo;
  * @version 1.0
  * @date 2015年8月28日 下午4:59:01
  */
-public class BackUserVo {
+public class BackUserVo extends BaseEntity {
 
 	private BackUserAo backUserAo;
 	private Integer pagesize; //一页大小

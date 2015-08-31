@@ -38,4 +38,9 @@
 			</if>
 		</where>
 	</select>
+	
+	<select id="selectSingleComboByPri" parameterType="String" resultType="com.family.kitchen.back.combo.ao.BackComboAo">
+		select * from combo where comboid = #{comboid}
+	</select>
+	
 </mapper>

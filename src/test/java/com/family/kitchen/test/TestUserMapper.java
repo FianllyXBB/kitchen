@@ -31,14 +31,15 @@ public class TestUserMapper {
 	public void insertUserList() throws IOException {
 		UserService userService = (UserService) applicationContext.getBean("userService");
 		List<User> list = new ArrayList<User>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 12; i < 1000; i++) {
 			User user = new User();
 			user.setUserid(UUIDUtil.randomUUID());
-			user.setUsername("青椒肉丝" + (i+2));
+			user.setUsername("洗白白" + (i+2));
 			user.setPassword("images/01.jpg");
-			user.setEmail("非常好吃奥");
-			user.setPhonenumber("12");
+			user.setEmail("qq1@qq.com");
+			user.setPhonenumber("12324345");
 			user.setCode(UUIDUtil.randomUUID() + UUIDUtil.randomUUID());
+			user.setVip(null);
 			list.add(user);
 		}
 			

@@ -28,7 +28,7 @@
 	<select id="selectCount" parameterType="com.family.kitchen.back.user.web.vo.BackUserVo" resultType="Integer">
 		select count(*) from users
 		<where>
-			<if test="username != null and username != ''">
+			<if test="backUserAo.username != null and backUserAo.username != ''">
 				username like '%${username}%'
 			</if>
 		</where>

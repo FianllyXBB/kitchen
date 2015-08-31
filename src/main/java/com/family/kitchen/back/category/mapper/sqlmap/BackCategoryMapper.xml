@@ -10,6 +10,24 @@
 	
 	<select id="selectAll" parameterType="com.family.kitchen.back.category.web.vo.CategoryVo" resultType="com.family.kitchen.back.category.ao.CategoryAo">
 		select * from category
+		order by
+		<choose>
+			<when test="ordercolumn != null and ordercolumn != ''">
+				${ordercolumn}
+			</when>
+			<otherwise>
+				categoryid
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="ordermethod != null and ordermethod != ''">
+				${ordermethod}
+			</when>
+			<otherwise>
+				asc
+			</otherwise>
+		</choose>
+		limit #{startrow},#{pagesize}
 	</select>
 	
 	<select id="selectCategoryByName" resultType="com.family.kitchen.back.category.ao.CategoryAo" parameterType="com.family.kitchen.back.category.web.vo.CategoryVo">

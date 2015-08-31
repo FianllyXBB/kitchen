@@ -39,6 +39,8 @@ public class BackCategoryServiceImpl implements BackCategoryService {
 			throws IOException {
 		List<CategoryAo> list = backCategoryMapper.selectAll(categoryVo);
 		PageSet<CategoryAo> pageData = new PageSet<CategoryAo>();
+		pageData.setCurrentPage(1);
+		pageData.setTotalPageNum(1);
 		pageData.setPageData(list);
 		return pageData;
 	}

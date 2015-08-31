@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.family.kitchen.back.combo.ao.BackComboAo;
 import com.family.kitchen.back.combo.mapper.BackComboMapper;
 import com.family.kitchen.back.combo.service.BackComboService;
 import com.family.kitchen.combo.ao.ComboAo;
@@ -60,6 +61,11 @@ public class BackComboServiceImpl implements BackComboService {
 		List<ComboAo> list = backComboMapper.selectAll(comboVo);
 		pageData.setPageData(list);
 		return pageData;
+	}
+
+	@Override
+	public BackComboAo selectSingleComboByPri(String comboid) throws IOException {
+		return backComboMapper.selectSingleComboByPri(comboid);
 	}
 
 }

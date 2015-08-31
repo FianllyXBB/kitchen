@@ -1,4 +1,5 @@
 body{
+	margin:30px auto;
 	text-align: center;
 }
 table, th , td {
@@ -13,6 +14,9 @@ table tr:nth-child(odd) {
 table tr:nth-child(even) {
   background-color: #DCEEF8;
 }
+table{
+	line-height: 25px;
+}
 th{
 	background-color: #168CFA;
 	color: #ffffff;
@@ -20,7 +24,34 @@ th{
 caption{
 	color: #168CFA;
 	font-weight: bolder;
+	text-align: center;
+}
+.openDialogA{
+	cursor: pointer;
 }
 #dialog{
 	width: 500px;
+}
+#operationDiv{
+	width: 50%;
+	margin:0 auto;
+	text-align: right;
+}
+#addButton{
+	width: 75px;
+    height: 30px;
+	background-image: url("../images/back/button-style.png");
+	background-color: transparent;
+	border: none;
+	background-position: -3px -2px;
+	cursor: pointer;
+}
+#deleteButton{
+	width: 75px;
+    height: 30px;
+	background-image: url("../images/back/button-style.png");
+	background-color: transparent;
+	border: none;
+	background-position: -78px -2px;
+	cursor: pointer;
 }

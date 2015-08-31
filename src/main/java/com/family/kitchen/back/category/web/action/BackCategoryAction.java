@@ -72,7 +72,7 @@ public class BackCategoryAction {
 		PageSet<CategoryAo> pageData = backCategoryService.categoryQuery(categoryVo);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("pageData", pageData);
-		modelAndView.setViewName("/back/categoryQuery2");
+		modelAndView.setViewName("/back/categoryQuery");
 		return modelAndView;
 	}
 	

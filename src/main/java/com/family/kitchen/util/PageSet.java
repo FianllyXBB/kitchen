@@ -23,6 +23,7 @@ public class PageSet<E> {
     private Integer endRow;//本页最后数据
     private String categoryid;//分页类别
     private Integer totalPageNum;//总共页数
+    private Integer currentPage;//当前页
     
     private List<E> pageData;
 
@@ -51,6 +52,7 @@ public class PageSet<E> {
 	}
 
 	public Integer getStartRow() {
+		startRow = pagesize * (currentPage - 1);
 		return startRow;
 	}
 
@@ -88,6 +90,14 @@ public class PageSet<E> {
 
 	public void setPageData(List<E> pageData) {
 		this.pageData = pageData;
+	}
+
+	public Integer getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(Integer currentPage) {
+		this.currentPage = currentPage;
 	}
     
     

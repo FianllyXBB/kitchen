@@ -7,6 +7,13 @@
 
   <display-name>kitchen</display-name>
   
+  <jsp-config>
+	<taglib>
+		<taglib-uri>bb</taglib-uri>
+		<taglib-location>/WEB-INF/classes/jsp.tld</taglib-location>
+	</taglib>
+  </jsp-config>
+  
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/classes/application.xml</param-value>

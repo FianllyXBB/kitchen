@@ -1,0 +1,46 @@
+body{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+div{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+#main{
+	margin:0 auto;
+	width: 1000px;
+	height:750px;
+	border: 1px solid gray;
+}
+#combolist{
+	margin:0 auto;
+	width: 1000px;
+	height:650px;
+	border: 1px solid blue;
+	text-align: left;
+}
+
+.comboxx{
+	width: 200px;
+	height: 275px;
+	float: left;
+	margin-left: 25px;
+	margin-top: 40px;
+	text-align: left;
+}
+.xxxx{
+	width: 100%;
+	padding-bottom:1px;
+	position: relative;
+	text-align: left;
+}
+img{
+	width: 200px;
+	height:150px;
+}
+.btn{
+	height:30px;
+	float: right;
+}

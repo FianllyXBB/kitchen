@@ -15,9 +15,38 @@ import com.family.kitchen.back.category.po.Category;
  * @date 2015年8月27日 下午1:25:20
  */
 public class CategoryVo {
+	
 	private Category category;
 	private CategoryAo categoryAo;
+	private String ordercolumn;
+	private String ordermethod;
+	private Integer startrow;
+	private Integer pagesize;
 	
+	public String getOrdercolumn() {
+		return ordercolumn;
+	}
+	public void setOrdercolumn(String ordercolumn) {
+		this.ordercolumn = ordercolumn;
+	}
+	public String getOrdermethod() {
+		return ordermethod;
+	}
+	public void setOrdermethod(String ordermethod) {
+		this.ordermethod = ordermethod;
+	}
+	public Integer getStartrow() {
+		return startrow;
+	}
+	public void setStartrow(Integer startrow) {
+		this.startrow = startrow;
+	}
+	public Integer getPagesize() {
+		return pagesize;
+	}
+	public void setPagesize(Integer pagesize) {
+		this.pagesize = pagesize;
+	}
 	public Category getCategory() {
 		return category;
 	}

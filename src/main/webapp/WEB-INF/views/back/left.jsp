@@ -29,7 +29,7 @@
 	<li>
 		<div class="link">combo manager</div>
 		<ul class="submenu">
-			<li><a href="/kitchen/backmain/comboQuery.ms?pagesize=8" target="right">combo query</a></li>
+			<li><a href="/kitchen/backCombo/comboQuery.ms?pagesize=8" target="right">combo query</a></li>
 			<li><a href="#">jQuery</a></li>
 			<li><a href="#">Frameworks javascript</a></li>
 		</ul>
@@ -45,7 +45,7 @@
 	</li>
 	<li><div class="link">用户管理</div>
 		<ul class="submenu">
-			<li><a href="#">查看用户</a></li>
+			<li><a href="/kitchen/backUserAction/selectAll.ms" target="right">查看用户</a></li>
 			<li><a href="#">testing...</a></li>
 			<li><a href="#">testing...</a></li>
 			<li><a href="#">testing...</a></li>

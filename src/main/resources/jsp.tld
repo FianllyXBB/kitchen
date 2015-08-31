@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib version="2.0"
+ 	xmlns="http://java.sun.com/xml/ns/j2ee"
+ 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd">
+	<tlib-version>1.0</tlib-version>
+	<tag>
+		<name>page</name>		
+		<tag-class>com.family.kitchen.util.Page</tag-class>
+		<body-content>empty</body-content>	
+		<!-- 当前页码 -->
+		<attribute>
+			<name>currentPage</name>		
+			<required>true</required>	
+			<rtexprvalue>true</rtexprvalue>	
+		</attribute>
+		<!-- 总共页数 -->
+		<attribute>
+			<name>totalPageNum</name>	
+			<required>true</required>	
+			<rtexprvalue>true</rtexprvalue>	
+		</attribute>
+		<!-- 一页大小 -->
+		<attribute>
+			<name>pagesize</name>		
+			<required>true</required>	
+			<rtexprvalue>true</rtexprvalue>	
+		</attribute>
+		<!-- 请求链接 -->
+		<attribute>
+			<name>url</name>		
+			<required>true</required>	
+			<rtexprvalue>true</rtexprvalue>	
+		</attribute>
+		<!-- 排序列 -->
+		<attribute>
+			<name>ordercolumn</name>		
+			<required>true</required>	
+			<rtexprvalue>true</rtexprvalue>	
+		</attribute>
+		<!-- 排序方法 -->
+		<attribute>
+			<name>ordermethod</name>		
+			<required>true</required>	
+			<rtexprvalue>true</rtexprvalue>	
+		</attribute>
+		<!-- 分门别类查询 -->
+		<attribute>
+			<name>categoryid</name>		
+			<required>true</required>	
+			<rtexprvalue>true</rtexprvalue>	
+		</attribute>
+	</tag>
+</taglib>

@@ -26,7 +26,7 @@
 	<insert id="insertUserList" parameterType="ArrayList">
 		insert into users values
 		<foreach collection="list" item="item" index="index" separator=",">
-			(#{item.userid}, #{item.username}, #{item.password}, #{item.email}, #{item.phonenumber}, #{item.code}, #{item.state}, #{item.show}, #{vip})
+			(#{item.userid}, #{item.username}, #{item.password}, #{item.email}, #{item.phonenumber}, #{item.code}, #{item.state}, #{item.show}, #{item.vip})
 		</foreach>
 	</insert>
 	
