@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.family.kitchen.back.combo.ao.BackComboAo;
+import com.family.kitchen.back.combo.po.BackCombo;
 import com.family.kitchen.combo.ao.ComboAo;
 import com.family.kitchen.combo.web.vo.ComboVo;
 /**
@@ -24,5 +25,7 @@ public interface BackComboMapper {
 	public Integer selectCount(ComboVo comboVo) throws IOException;
 
 	public BackComboAo selectSingleComboByPri(String comboid) throws IOException;
+	
+	public void insertSingleCombo(BackCombo backCombo) throws IOException;
 
 }

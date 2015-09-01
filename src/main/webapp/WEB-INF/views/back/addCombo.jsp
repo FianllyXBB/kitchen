@@ -23,31 +23,45 @@ td,th{
 </style>
 </head>
 <body>
-<form id="modifyForm" name="modifyForm" target="_self" method="post">
-	<input type="text" name="comboid" value="${backComboAo.comboid }" hidden="true"/>
+<form action="/kitchen/backCombo/addCombo.ms" method="post" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<td><span>名称：</span></td>
-			<td><input type="text" name="comboname" value="${backComboAo.comboname }"/></td>
+			<td><input type="text" name="comboname" /></td>
 		</tr>
 		<tr>
 			<td><span>价格：</span></td>
-			<td><input type="text" name="comboprice" value="${backComboAo.comboprice }"/></td>
+			<td><input type="text" name="comboprice" /></td>
 		</tr>
 		<tr>
 			<td><span>制作：</span></td>
-			<td><input type="text" name="combodescription" value="${backComboAo.combodescription }"/></td>
+			<td><input type="text" name="combodescription" /></td>
 		</tr>
 		<tr>
 			<td><span>总量：</span></td>
-			<td><input type="text" name="combonum" value="${backComboAo.combonum }"/></td>
+			<td><input type="text" name="combonum" /></td>
 		</tr>
 		<tr>
 			<td><span>剩余：</span></td>
-			<td><input type="text" name="comborenum" value="${backComboAo.comborenum }"/></td>
+			<td><input type="text" name="comborenum" /></td>
+		</tr>
+		<tr>
+			<td><span>类别：</span></td>
+			<td>
+			<select name="categoryid">
+			<c:forEach items="${pageData.pageData }" var="item">
+				<option value="${item.categoryid }">${item.categoryname }</option>
+			</c:forEach>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td><span>图片：</span></td>
+			<td><input type="file" name="pic" /></td>
 		</tr>
 	</table>
-	<input type="submit" id="submit" style="display:none;"/>
+	
+	<input type="submit" id="submit" value="添加"/>
 </form>
 </body>
 </html>

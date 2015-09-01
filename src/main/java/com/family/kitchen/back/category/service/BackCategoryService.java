@@ -29,4 +29,6 @@ public interface BackCategoryService {
 	public void updateCategory(String categoryid, String categoryName) throws IOException;
 
 	public CategoryAo selectSingleCategoryByPri(String categoryid) throws IOException;
+	
+	public Integer selectCounts(CategoryVo categoryVo) throws IOException;
 }

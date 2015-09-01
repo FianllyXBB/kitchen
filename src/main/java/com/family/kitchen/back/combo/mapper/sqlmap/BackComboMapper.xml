@@ -43,4 +43,10 @@
 		select * from combo where comboid = #{comboid}
 	</select>
 	
+	<insert id="insertSingleCombo" parameterType="com.family.kitchen.back.combo.po.BackCombo">
+		insert into combo(comboid,comboname,comboimage,combodescription,comboprice,combonum,comborenum,categoryid) 
+		values
+		(#{comboid}, #{comboname}, #{comboimage}, #{combodescription}, #{comboprice}, #{combonum}, #{comborenum}, #{categoryid})
+	</insert>
+	
 </mapper>

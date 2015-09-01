@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.family.kitchen.back.combo.ao.BackComboAo;
 import com.family.kitchen.back.combo.mapper.BackComboMapper;
+import com.family.kitchen.back.combo.po.BackCombo;
 import com.family.kitchen.back.combo.service.BackComboService;
 import com.family.kitchen.combo.ao.ComboAo;
 import com.family.kitchen.combo.web.vo.ComboVo;
@@ -66,6 +67,12 @@ public class BackComboServiceImpl implements BackComboService {
 	@Override
 	public BackComboAo selectSingleComboByPri(String comboid) throws IOException {
 		return backComboMapper.selectSingleComboByPri(comboid);
+	}
+
+	@Override
+	public void addCombo(BackCombo backCombo) throws IOException {
+		// TODO Auto-generated method stub
+		backComboMapper.insertSingleCombo(backCombo);
 	}
 
 }

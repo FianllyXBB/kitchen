@@ -29,7 +29,7 @@
 		<thead><tr><th>序号</th><th>名称</th><th>操作</th></tr></thead>
 		<c:forEach items="${pageData.pageData }" var="item" varStatus="status">	
 			<tr>
-			<td>${status.index + 1}</td>
+			<td>${status.index + 1 + pageData.startRow}</td>
 			<td>${item.categoryname}</td>
 			<td><a class="openDialogA" data-val="/kitchen/backCategory/beforeUpdateCategory.ms?categoryid=${item.categoryid}" onclick="modify(this,400,400)">修改</a></td>
 			</tr>

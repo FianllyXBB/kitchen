@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -67,8 +68,14 @@ public class BackCategoryAction {
 	}
 	
 	@RequestMapping("/categoryQuery")
-	public ModelAndView categoryQuery() throws IOException{
+	public ModelAndView categoryQuery(@RequestParam(defaultValue="1") Integer pagenumber, @RequestParam(defaultValue="10") Integer pagesize,
+			String ordercolumn, @RequestParam(defaultValue="asc") String ordermethod) throws IOException{
 		CategoryVo categoryVo = new CategoryVo();
+		categoryVo.setCurrentPage(pagenumber);
+		categoryVo.setOrdercolumn(ordercolumn);
+		categoryVo.setOrdermethod(ordermethod);
+		categoryVo.setPagesize(pagesize);
+		categoryVo.setStartrow((pagenumber-1)*pagesize);
 		PageSet<CategoryAo> pageData = backCategoryService.categoryQuery(categoryVo);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("pageData", pageData);

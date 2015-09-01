@@ -39,8 +39,11 @@ public class BackCategoryServiceImpl implements BackCategoryService {
 			throws IOException {
 		List<CategoryAo> list = backCategoryMapper.selectAll(categoryVo);
 		PageSet<CategoryAo> pageData = new PageSet<CategoryAo>();
-		pageData.setCurrentPage(1);
-		pageData.setTotalPageNum(1);
+		pageData.setCurrentPage(categoryVo.getCurrentPage());
+		pageData.setPagesize(categoryVo.getPagesize());
+		pageData.setOrdercolumn(categoryVo.getOrdercolumn());
+		Integer totalRows = backCategoryMapper.selectCounts(categoryVo);
+		pageData.setTotalPageNum(totalRows%categoryVo.getPagesize()==0?totalRows/categoryVo.getPagesize():totalRows/categoryVo.getPagesize()+1);
 		pageData.setPageData(list);
 		return pageData;
 	}
@@ -70,6 +73,11 @@ public class BackCategoryServiceImpl implements BackCategoryService {
 	public CategoryAo selectSingleCategoryByPri(String categoryid)
 			throws IOException {
 		return backCategoryMapper.selectSingleCategoryByPri(categoryid);
+	}
+
+	@Override
+	public Integer selectCounts(CategoryVo categoryVo) throws IOException {
+		return backCategoryMapper.selectCounts(categoryVo);
 	}
 
 }

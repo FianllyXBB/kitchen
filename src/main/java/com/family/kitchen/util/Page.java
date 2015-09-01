@@ -133,25 +133,29 @@ public class Page extends TagSupport {
 		if (end > totalPageNum) {
 			end = totalPageNum;
 		}
-		try {			
-			if (currentPage == 1) {
-				out.println("<nav><ul class='pagination'><li class='disabled'><a data-aria-label='Previous'><span data-aria-hidden='true'>&laquo;</span></a></li>");
+		try {
+			if (totalPageNum == 0) {
+				out.println("抱歉，查无所获");
 			}else {
-				out.println("<nav><ul class='pagination'><li><a href='" + url + criteria + (currentPage-1) + "' data-aria-label='Previous'><span data-aria-hidden='true'>&laquo;</span></a></li>");
-			}
-			for (int i = begin; i <= end; i++) {
-				if (i == currentPage) {
-					out.println("<li class='active'><a>"+ i +"<span class='sr-only'>(current)</span></a></li>");
+				if (currentPage == 1) {
+					out.println("<nav><ul class='pagination'><li class='disabled'><a data-aria-label='Previous'><span data-aria-hidden='true'>&laquo;</span></a></li>");
 				}else {
-					out.println("<li><a href='" + url + criteria + i + "'>"+ i +"<span class='sr-only'>(current)</span></a></li>");
+					out.println("<nav><ul class='pagination'><li><a href='" + url + criteria + (currentPage-1) + "' data-aria-label='Previous'><span data-aria-hidden='true'>&laquo;</span></a></li>");
 				}
-			}
-			if (currentPage == totalPageNum) {
-				out.println("<li class='disabled'><a data-aria-label='Next'><span data-aria-hidden='true'>&raquo;</span></a></li>");
-			}else {
-				out.println("<li><a href='" + url + criteria + (currentPage+1) + "' data-aria-label='Next'><span data-aria-hidden='true'>&raquo;</span></a></li>");
-			}
-			out.println("<li><label style='text-align: center;font-size: 20px;'>"+ "第" + currentPage + "页/" +"共" + totalPageNum + "页</label></li></ul></nav>");
+				for (int i = begin; i <= end; i++) {
+					if (i == currentPage) {
+						out.println("<li class='active'><a>"+ i +"<span class='sr-only'>(current)</span></a></li>");
+					}else {
+						out.println("<li><a href='" + url + criteria + i + "'>"+ i +"<span class='sr-only'>(current)</span></a></li>");
+					}
+				}
+				if (currentPage == totalPageNum) {
+					out.println("<li class='disabled'><a data-aria-label='Next'><span data-aria-hidden='true'>&raquo;</span></a></li>");
+				}else {
+					out.println("<li><a href='" + url + criteria + (currentPage+1) + "' data-aria-label='Next'><span data-aria-hidden='true'>&raquo;</span></a></li>");
+				}
+				out.println("<li><label style='text-align: center;font-size: 20px;'>"+ "第" + currentPage + "页/" +"共" + totalPageNum + "页</label></li></ul></nav>");
+			}			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

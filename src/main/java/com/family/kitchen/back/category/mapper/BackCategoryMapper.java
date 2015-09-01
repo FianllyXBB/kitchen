@@ -29,5 +29,7 @@ public interface BackCategoryMapper {
 	public void updateCategory(CategoryVo categoryVo) throws IOException;
 
 	public CategoryAo selectSingleCategoryByPri(String categoryid) throws IOException;
+	
+	public Integer selectCounts(CategoryVo categoryVo) throws IOException;
 
 }

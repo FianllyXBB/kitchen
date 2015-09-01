@@ -22,6 +22,7 @@ public class CategoryVo {
 	private String ordermethod;
 	private Integer startrow;
 	private Integer pagesize;
+	private Integer currentPage;
 	
 	public String getOrdercolumn() {
 		return ordercolumn;
@@ -58,6 +59,12 @@ public class CategoryVo {
 	}
 	public void setCategoryAo(CategoryAo categoryAo) {
 		this.categoryAo = categoryAo;
+	}
+	public Integer getCurrentPage() {
+		return currentPage;
+	}
+	public void setCurrentPage(Integer currentPage) {
+		this.currentPage = currentPage;
 	}
 	
 }

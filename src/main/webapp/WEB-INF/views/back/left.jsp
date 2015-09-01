@@ -30,7 +30,7 @@
 		<div class="link">combo manager</div>
 		<ul class="submenu">
 			<li><a href="/kitchen/backCombo/comboQuery.ms?pagesize=8" target="right">combo query</a></li>
-			<li><a href="#">jQuery</a></li>
+			<li><a href="/kitchen/backCombo/beforeAddCombo.ms?pagesize=8" target="right">添加食物</a></li>
 			<li><a href="#">Frameworks javascript</a></li>
 		</ul>
 	</li>

@@ -42,4 +42,8 @@
 		select * from category where categoryid = #{categoryid}
 	</select>
 	
+	<select id="selectCounts" parameterType="com.family.kitchen.back.category.web.vo.CategoryVo" resultType="Integer">
+		select count(*) from category
+	</select>
+	
 </mapper>
