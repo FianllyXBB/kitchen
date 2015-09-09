@@ -2,7 +2,6 @@ package com.family.kitchen.back.combo.web.action;
 
 import java.io.File;
 import java.io.IOException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,12 +40,19 @@ public class BackComboAction {
 	private BackCategoryService backCategoryService;
 	
 	@RequestMapping("/comboQuery")
-	public ModelAndView comboQuery(@RequestParam(defaultValue="1") Integer pagenumber, @RequestParam(defaultValue="10") Integer pagesize,
+	public ModelAndView comboQuery(@RequestParam(defaultValue="1") Integer pagenumber, @RequestParam(defaultValue="8") Integer pagesize,
 			String ordercolumn, @RequestParam(defaultValue="asc") String ordermethod, String categoryid) throws IOException {
 		ModelAndView modelAndView = new ModelAndView();
 		PageSet<ComboAo> pageData = backComboService.selectAll(pagenumber, pagesize, ordercolumn, ordermethod, categoryid);
 		pageData.setCurrentPage(pagenumber);
 		modelAndView.addObject("pageData", pageData);
+		CategoryVo categoryVo = new CategoryVo();
+		Integer categoryNum = backCategoryService.selectCounts(categoryVo);
+		categoryVo.setStartrow(0);
+		categoryVo.setPagesize(categoryNum);
+		PageSet<CategoryAo> categoryPageData = backCategoryService.categoryQuery(categoryVo);
+		modelAndView.addObject("categoryPageData", categoryPageData);
+		modelAndView.addObject("categoryid", categoryid);
 		modelAndView.setViewName("/back/comboQuery");
 		return modelAndView;
 	}
@@ -104,7 +110,15 @@ public class BackComboAction {
 		PageSet<ComboAo> pageData = backComboService.selectAll(1, 8, null, null, categoryid);
 		pageData.setCurrentPage(1);
 		modelAndView.addObject("pageData", pageData);
+		CategoryVo categoryVo = new CategoryVo();
+		Integer categoryNum = backCategoryService.selectCounts(categoryVo);
+		categoryVo.setStartrow(0);
+		categoryVo.setPagesize(categoryNum);
+		PageSet<CategoryAo> categoryPageData = backCategoryService.categoryQuery(categoryVo);
+		modelAndView.addObject("categoryPageData", categoryPageData);
+		modelAndView.addObject("categoryid", categoryid);
 		modelAndView.setViewName("/back/comboQuery");
 		return modelAndView;
 	}
+	
 }

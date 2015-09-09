@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="bb" prefix="bb" %>
 <!DOCTYPE html>
 <html>
@@ -18,15 +19,39 @@
 <title>后台套餐列表</title>
 </head>
 <body>
+<div style="float: right;">
+	<form id="queryForm" action="/kitchen/backCombo/comboQuery.ms">
+		<label>请选择分类：</label>
+		<select name="categoryid">
+		<option value="">全部</option>
+		<c:forEach items="${categoryPageData.pageData }" var="item">
+		<c:choose>		
+		<c:when test="${categoryid eq item.categoryid}">
+			<option value="${item.categoryid }" selected="selected">${item.categoryname }</option>
+		</c:when>
+		<c:otherwise>
+			<option value="${item.categoryid }">${item.categoryname }</option>
+		</c:otherwise>
+		</c:choose>
+		</c:forEach>		
+		</select>
+		<input type="submit" value="查看">
+	</form>
+</div>
 <div id="main">
 	<div id="combolist">
 		<c:forEach items="${pageData.pageData }" var="item">
 			<div class="comboxx">
-				<img src="${item.comboimage }"/>
+				<img style="cursor: pointer;" src="${item.comboimage }" data-val="/kitchen/backCombo/beforeUpdateCombo.ms?comboid=${item.comboid}" onclick="modify(this,400,400)"/>
 				<div class="xxxx">
 					<label>套餐：${item.comboname }</label><br/>
 					<label>价格：${item.comboprice }</label><br/>
-					<label>制作：${item.combodescription }</label><br/>
+					<label>
+					<c:choose >
+						<c:when test="${fn:length(item.combodescription) > 6}">制作：${fn:substring(item.combodescription,0,6)}...</c:when>
+						<c:otherwise>制作：${item.combodescription }</c:otherwise>
+					</c:choose>
+					</label><br/>
 					<label>总量：${item.combonum }</label><br/>
 					<label>剩余：${item.comborenum }</label>
 					<input type="button" value="修改" class="btn" data-val="/kitchen/backCombo/beforeUpdateCombo.ms?comboid=${item.comboid}" onclick="modify(this,400,400)">
